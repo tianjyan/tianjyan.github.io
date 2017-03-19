@@ -1,0 +1,718 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="ProtoBuffer," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="前言Protocol Buffers (下面简称PB)是一种轻便高效的结构化数据存储格式，可以用于结构化数据串行化，很适合做数据存储或 RPC 数据交换格式。它可用于通讯协议、数据存储等领域的语言无关、平台无关、可扩展的序列化结构数据格式。它支持多种语言，比如C++，Java，C#，Python，JavaScript等等。目前它的最新版本是3.0.0。与PB经常相提并论的也是Google推出的Fl">
+<meta property="og:type" content="article">
+<meta property="og:title" content="从微信SDK看ProtoBuffer文件的生成">
+<meta property="og:url" content="https://youngytj.github.io/2016/07/22/ProtoBuffer/index.html">
+<meta property="og:site_name" content="洞见">
+<meta property="og:description" content="前言Protocol Buffers (下面简称PB)是一种轻便高效的结构化数据存储格式，可以用于结构化数据串行化，很适合做数据存储或 RPC 数据交换格式。它可用于通讯协议、数据存储等领域的语言无关、平台无关、可扩展的序列化结构数据格式。它支持多种语言，比如C++，Java，C#，Python，JavaScript等等。目前它的最新版本是3.0.0。与PB经常相提并论的也是Google推出的Fl">
+<meta property="og:image" content="http://7xqjah.com1.z0.glb.clouddn.com/2016-07-22-ProtoBuffer-01.png">
+<meta property="og:image" content="http://7xqjah.com1.z0.glb.clouddn.com/2016-07-22-ProtoBuffer-02.png">
+<meta property="og:image" content="http://7xqjah.com1.z0.glb.clouddn.com/2016-07-22-ProtoBuffer-03.png">
+<meta property="og:image" content="http://7xqjah.com1.z0.glb.clouddn.com/2016-07-22-ProtoBuffer-04.png">
+<meta property="og:image" content="http://7xqjah.com1.z0.glb.clouddn.com/2016-07-22-ProtoBuffer-05.png">
+<meta property="og:image" content="http://7xqjah.com1.z0.glb.clouddn.com/2016-07-22-ProtoBuffer-07.png">
+<meta property="og:image" content="http://7xqjah.com1.z0.glb.clouddn.com/2016-07-22-ProtoBuffer-08.png">
+<meta property="og:image" content="http://7xqjah.com1.z0.glb.clouddn.com/2016-07-22-ProtoBuffer-09.png">
+<meta property="og:image" content="http://7xqjah.com1.z0.glb.clouddn.com/2016-07-22-ProtoBuffer-11.png">
+<meta property="og:image" content="http://7xqjah.com1.z0.glb.clouddn.com/2016-07-22-ProtoBuffer-12.png">
+<meta property="og:image" content="http://7xqjah.com1.z0.glb.clouddn.com/2016-07-22-ProtoBuffer-13.png">
+<meta property="og:image" content="http://7xqjah.com1.z0.glb.clouddn.com/2016-07-22-ProtoBuffer-14.png">
+<meta property="og:image" content="http://7xqjah.com1.z0.glb.clouddn.com/2016-07-22-ProtoBuffer-15.png">
+<meta property="og:image" content="http://7xqjah.com1.z0.glb.clouddn.com/2016-07-22-ProtoBuffer-17.png">
+<meta property="og:updated_time" content="2017-03-17T14:14:40.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="从微信SDK看ProtoBuffer文件的生成">
+<meta name="twitter:description" content="前言Protocol Buffers (下面简称PB)是一种轻便高效的结构化数据存储格式，可以用于结构化数据串行化，很适合做数据存储或 RPC 数据交换格式。它可用于通讯协议、数据存储等领域的语言无关、平台无关、可扩展的序列化结构数据格式。它支持多种语言，比如C++，Java，C#，Python，JavaScript等等。目前它的最新版本是3.0.0。与PB经常相提并论的也是Google推出的Fl">
+<meta name="twitter:image" content="http://7xqjah.com1.z0.glb.clouddn.com/2016-07-22-ProtoBuffer-01.png">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: undefined,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> 从微信SDK看ProtoBuffer文件的生成 | 洞见 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?6aff2c6dc8230f676ba7046ed87dbffb";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">洞见</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">By youngytj</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                从微信SDK看ProtoBuffer文件的生成
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-07-22T21:15:58+08:00" content="2016-07-22">
+              2016-07-22
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/CSharp/" itemprop="url" rel="index">
+                    <span itemprop="name">CSharp</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>Protocol Buffers (下面简称PB)是一种轻便高效的结构化数据存储格式，可以用于结构化数据串行化，很适合做数据存储或 RPC 数据交换格式。它可用于通讯协议、数据存储等领域的语言无关、平台无关、可扩展的序列化结构数据格式。它支持多种语言，比如C++，Java，C#，Python，JavaScript等等。目前它的最新版本是<a href="https://github.com/google/protobuf/releases" target="_blank" rel="external">3.0.0</a>。与PB经常相提并论的也是Google推出的FlatBuffers(下面简称FB)。有关PB和FB性能和语义等方面的区别，这里就不展开描述了。如果有兴趣，可以参阅下面的信息：</p>
+<ul>
+<li><a href="http://mp.weixin.qq.com/s?__biz=MzA3MDY5NjAzMw==&amp;mid=205406410&amp;idx=7&amp;sn=dbacd18a854886022be6351410885b39&amp;" target="_blank" rel="external">Google序列化库FlatBuffers 1.1发布，及与protobuf的比较</a></li>
+<li><a href="http://google.github.io/flatbuffers/" target="_blank" rel="external">FlatBuffers Documentation</a>  </li>
+<li><a href="http://blog.csdn.net/menggucaoyuan/article/details/34409433" target="_blank" rel="external">FlatBuffers与protobuf性能比较</a></li>
+</ul>
+<p>目前很多公司在一些高性能的通信场景下，会越来越多的选择用PB或者FB来替代我们常用的Json。比如说Windows Phone的微信的SDK就用到了。<br><a id="more"></a></p>
+<h1 id="反编译微信SDK"><a href="#反编译微信SDK" class="headerlink" title="反编译微信SDK"></a>反编译微信SDK</h1><p>PB对C#官方的支持是从3.0开始的，之前的1.0和2.0的版本都能找到一些非官方的版本。我们先反编译一下微信的SDK，看下它具体是什么版本的。</p>
+<p>首先，我们从微信的官网下载SDK：</p>
+<p><img src="http://7xqjah.com1.z0.glb.clouddn.com/2016-07-22-ProtoBuffer-01.png" alt="Image"></p>
+<p>登陆微信开发平台，进入资源中心，选择WP8资源下载，点击下载。</p>
+<p>然后下载我们的反编译工具<a href="http://ilspy.net/" target="_blank" rel="external">ILSpy</a>。</p>
+<p>解压下载完成的ILSpy和SDK包，用ILSpy.exe打开MicroMsgSDK.dll。</p>
+<p><img src="http://7xqjah.com1.z0.glb.clouddn.com/2016-07-22-ProtoBuffer-02.png" alt="Image"></p>
+<p>我们暂时先不管这个结构到底是怎么来的，我们可以看到反编译出来的文件带了ProtoGen的版本号，我们尝试从Github上找到这个版本号的代码。</p>
+<h1 id="编译ProtoBuffer源码"><a href="#编译ProtoBuffer源码" class="headerlink" title="编译ProtoBuffer源码"></a>编译ProtoBuffer源码</h1><p>我们先打开官方的C#版本的PB的源码页面：<a href="https://github.com/google/protobuf/tree/master/csharp" target="_blank" rel="external">地址</a>。</p>
+<p>可以看到官方地址只保留了3.0的版本，对于旧的2.0版本的代码在<a href="https://github.com/jskeet/protobuf-csharp-port" target="_blank" rel="external">jskeet</a>的账号下，  </p>
+<p><img src="http://7xqjah.com1.z0.glb.clouddn.com/2016-07-22-ProtoBuffer-03.png" alt="Image"></p>
+<p>我们点开这个仓库，然后找到它的<a href="https://github.com/jskeet/protobuf-csharp-port/releases" target="_blank" rel="external">Release</a>页面：  </p>
+<p><img src="http://7xqjah.com1.z0.glb.clouddn.com/2016-07-22-ProtoBuffer-04.png" alt="Image"></p>
+<p>我们找到2.3.0.277的源码并下载到本地。</p>
+<p>解压文件，我们看到Build文件夹下有一堆编译用的脚本：  </p>
+<p><img src="http://7xqjah.com1.z0.glb.clouddn.com/2016-07-22-ProtoBuffer-05.png" alt="Image"></p>
+<p>双击运行buildAll.bat(此处应确保本机已经安装了Visual Studio 2008及以上版本)，然后等待编译完成。</p>
+<h1 id="尝试使用源码中的Proto文件生成cs代码"><a href="#尝试使用源码中的Proto文件生成cs代码" class="headerlink" title="尝试使用源码中的Proto文件生成cs代码"></a>尝试使用源码中的Proto文件生成cs代码</h1><p>我们找到ProtoGen项目中生成的exe文件，尝试将它放到命令行中运行：<br><img src="http://7xqjah.com1.z0.glb.clouddn.com/2016-07-22-ProtoBuffer-07.png" alt="Image"></p>
+<p>它提示我们找不到protoc.exe程序。我们回到源码的根目录会发现有一个lib的文件夹，里面有一个protoc.exe的程序。所以我们尝试吧ProtoGen项目的所有生成文件拷贝到lib下。<br>继续尝试运行我们的ProtoGen程序。</p>
+<p><img src="http://7xqjah.com1.z0.glb.clouddn.com/2016-07-22-ProtoBuffer-08.png" alt="Image"></p>
+<p>这回对了，我们尝试把源码下的protos文件夹下的三个子文件夹拷贝到我们的lib目录下。</p>
+<p>我们尝试输入如下内容：</p>
+<pre><code>protogen --proto_path==protos protos/tutorial/addressbook.proto
+</code></pre><p>又得到一个错误信息：  </p>
+<p><img src="http://7xqjah.com1.z0.glb.clouddn.com/2016-07-22-ProtoBuffer-09.png" alt="Image"></p>
+<p>提示我们找不到依赖，我们尝试打开proto文件：(有关PB的语法请参阅：<a href="http://www.cnblogs.com/stephen-liu74/archive/2013/01/02/2841485.html" target="_blank" rel="external">http://www.cnblogs.com/stephen-liu74/archive/2013/01/02/2841485.html</a>)</p>
+<figure class="highlight protobuf"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line">package tutorial;</div><div class="line"></div><div class="line">import &quot;google/protobuf/csharp_options.proto&quot;;</div><div class="line"></div><div class="line">option (google.protobuf.csharp_file_options).namespace = &quot;Google.ProtocolBuffers.Examples.AddressBook&quot;;</div><div class="line">option (google.protobuf.csharp_file_options).umbrella_classname = &quot;AddressBookProtos&quot;;</div><div class="line"></div><div class="line">option optimize_for = SPEED;</div><div class="line"></div><div class="line">message Person &#123;</div><div class="line">required string name = 1;</div><div class="line">required int32 id = 2;        // Unique ID number for this person.</div><div class="line">optional string email = 3;</div><div class="line"></div><div class="line">enum PhoneType &#123;</div><div class="line">    MOBILE = 0;</div><div class="line">    HOME = 1;</div><div class="line">    WORK = 2;</div><div class="line">&#125;</div><div class="line"></div><div class="line">message PhoneNumber &#123;</div><div class="line">    required string number = 1;</div><div class="line">    optional PhoneType type = 2 [default = HOME];</div><div class="line">&#125;</div><div class="line"></div><div class="line">repeated PhoneNumber phone = 4;</div><div class="line">&#125;</div><div class="line"></div><div class="line">// Our address book file is just one of these.</div><div class="line">message AddressBook &#123;</div><div class="line">repeated Person person = 1;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>我们可以看到导入了google/protobuf/csharp_options.proto文件，我们回头看protogen的命令参数中有一个import的标记，我们尝试添加：</p>
+<pre><code>protogen --proto_path==protos protos/tutorial/addressbook.proto --include_imports=google/protobuf/csharp_options.proto
+</code></pre><p>没有任何错误，并且我们在lib的目录下发现了生成的cs文件。<br><img src="http://7xqjah.com1.z0.glb.clouddn.com/2016-07-22-ProtoBuffer-11.png" alt="Image"></p>
+<h1 id="从cs文件反推proto文件"><a href="#从cs文件反推proto文件" class="headerlink" title="从cs文件反推proto文件"></a>从cs文件反推proto文件</h1><p>我们打开AddressBookProtos文件，阅读源码发现：</p>
+<ul>
+<li><p>只有两个非静态类，与我们Proto文件中的Person和AddressBook对应：<br><img src="http://7xqjah.com1.z0.glb.clouddn.com/2016-07-22-ProtoBuffer-12.png" alt="Image"></p>
+</li>
+<li><p>Person类中又有一个嵌套的枚举和类，与PhoneType和PhoneNumber对应：<br><img src="http://7xqjah.com1.z0.glb.clouddn.com/2016-07-22-ProtoBuffer-13.png" alt="Image"></p>
+</li>
+<li><p>我们有发现，在类的IsInitialized中，Name和Id等required的有是否有值得判断，所以我们能区分去required和optional<br><img src="http://7xqjah.com1.z0.glb.clouddn.com/2016-07-22-ProtoBuffer-14.png" alt="Image"></p>
+</li>
+</ul>
+<p>其他依赖信息，我们可以通过引用来查找。</p>
+<h1 id="从反编译的微信文件中反推proto文件"><a href="#从反编译的微信文件中反推proto文件" class="headerlink" title="从反编译的微信文件中反推proto文件"></a>从反编译的微信文件中反推proto文件</h1><p>我们以BaseReqP为例。首先，没有using，所以我们确定没有其他的Proto文件的依赖。我们只发现一个类，所以说明它只有一条message，名称就是BaseReqP，然后包名是MicroMsg.sdk.protobuf。<br>我们知道message的所有字段是需要标记数字的：<br><img src="http://7xqjah.com1.z0.glb.clouddn.com/2016-07-22-ProtoBuffer-15.png" alt="Image"></p>
+<p>从这里我们又反推出，message有两个字段：Transaction和Type，它们类型分别是string和uint。<br>接下来我们推是否是必须的。找到我们的IsInitialized:<br><img src="http://7xqjah.com1.z0.glb.clouddn.com/2016-07-22-ProtoBuffer-17.png" alt="Image"><br>从这里我们就知道了两个字段都是必须的。所以综合上述信息，我们可以写出的proto文件如下：</p>
+<figure class="highlight protobuf"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">package MicroMsg.sdk.protobuf;</div><div class="line"></div><div class="line">message BaseReqP &#123;</div><div class="line">    required uint32 Type = 1;</div><div class="line">    required string Transaction = 2;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h1 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h1><p>本篇内容简要介绍了ProtoBuffer的文件如何生成C#文件，并简单的举例如何从C#文件反推Proto文件。</p>
+<h1 id="参考信息"><a href="#参考信息" class="headerlink" title="参考信息"></a>参考信息</h1><ul>
+<li><a href="https://google.github.io/flatbuffers/" target="_blank" rel="external">FlatBuffers Documentation</a>  </li>
+<li><a href="http://www.ibm.com/developerworks/cn/linux/l-cn-gpb/index.html" target="_blank" rel="external">Google Protocol Buffer 的使用和原理</a>  </li>
+<li><a href="https://github.com/google/protobuf" target="_blank" rel="external">Protobuf Source</a>  </li>
+<li><a href="https://developers.google.com/protocol-buffers/" target="_blank" rel="external">protocol-buffers documentation</a>  </li>
+<li><a href="http://mp.weixin.qq.com/s?__biz=MzA3MDY5NjAzMw==&amp;mid=205406410&amp;idx=7&amp;sn=dbacd18a854886022be6351410885b39&amp;" target="_blank" rel="external">Google序列化库FlatBuffers 1.1发布，及与protobuf的比较</a>  </li>
+<li><a href="http://blog.csdn.net/menggucaoyuan/article/details/34409433" target="_blank" rel="external">FlatBuffers与protobuf性能比较</a></li>
+<li><a href="http://www.jianshu.com/p/b1f18240f0c7" target="_blank" rel="external">Protocol Buffer使用简介</a>  </li>
+<li><a href="http://www.cnblogs.com/stephen-liu74/archive/2013/01/02/2841485.html" target="_blank" rel="external">Protocol Buffer技术详解(语言规范)</a>  </li>
+</ul>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/ProtoBuffer/" rel="tag">#ProtoBuffer</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/07/20/ngrok/" rel="next" title="Mac下运行ngrok">
+                <i class="fa fa-chevron-left"></i> Mac下运行ngrok
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/09/22/pass2angular/" rel="prev" title="Node向Angular传值方式简析">
+                Node向Angular传值方式简析 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="https://avatars2.githubusercontent.com/u/4630470?v=3&s=460"
+               alt="youngytj" />
+          <p class="site-author-name" itemprop="name">youngytj</p>
+          <p class="site-description motion-element" itemprop="description">博观而约取，厚积而薄发。</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">13</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">13</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/youngytj" target="_blank" title="Github">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  Github
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://insights.thoughtworkers.org/reading-radar-2016/" target="_blank" title="读书雷达">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  读书雷达
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://kanbanflow.com/" target="_blank" title="KanbanFlow">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  KanbanFlow
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#前言"><span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#反编译微信SDK"><span class="nav-text">反编译微信SDK</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#编译ProtoBuffer源码"><span class="nav-text">编译ProtoBuffer源码</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#尝试使用源码中的Proto文件生成cs代码"><span class="nav-text">尝试使用源码中的Proto文件生成cs代码</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#从cs文件反推proto文件"><span class="nav-text">从cs文件反推proto文件</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#从反编译的微信文件中反推proto文件"><span class="nav-text">从反编译的微信文件中反推proto文件</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#小结"><span class="nav-text">小结</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考信息"><span class="nav-text">参考信息</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2013 - 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">youngytj</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+  
+  
+  
+
+  
+
+  
+
+</body>
+</html>

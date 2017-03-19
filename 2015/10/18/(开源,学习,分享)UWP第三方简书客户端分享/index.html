@@ -1,0 +1,668 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="UWP," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="简介Windows10正式版发布到现在,我利用零零碎碎的一些时间对UWP进行一些学习,也基于这门技术开发了一个第三方的简书App.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="(开源,学习,分享)UWP第三方简书客户端分享">
+<meta property="og:url" content="https://youngytj.github.io/2015/10/18/(开源,学习,分享)UWP第三方简书客户端分享/index.html">
+<meta property="og:site_name" content="洞见">
+<meta property="og:description" content="简介Windows10正式版发布到现在,我利用零零碎碎的一些时间对UWP进行一些学习,也基于这门技术开发了一个第三方的简书App.">
+<meta property="og:updated_time" content="2017-03-19T02:14:07.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="(开源,学习,分享)UWP第三方简书客户端分享">
+<meta name="twitter:description" content="简介Windows10正式版发布到现在,我利用零零碎碎的一些时间对UWP进行一些学习,也基于这门技术开发了一个第三方的简书App.">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: undefined,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> (开源,学习,分享)UWP第三方简书客户端分享 | 洞见 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?6aff2c6dc8230f676ba7046ed87dbffb";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">洞见</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">By youngytj</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                (开源,学习,分享)UWP第三方简书客户端分享
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2015-10-18T21:15:58+08:00" content="2015-10-18">
+              2015-10-18
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Open-Source/" itemprop="url" rel="index">
+                    <span itemprop="name">Open Source</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><p>Windows10正式版发布到现在,我利用零零碎碎的一些时间对UWP进行一些学习,也基于这门技术开发了一个第三方的简书App.</p>
+<a id="more"></a>
+<h1 id="基本界面"><a href="#基本界面" class="headerlink" title="基本界面"></a>基本界面</h1><p>优酷视频:<br><a href="http://v.youku.com/v_show/id_XMTM2MjU4MjI4NA==.html" target="_blank" rel="external">http://v.youku.com/v_show/id_XMTM2MjU4MjI4NA==.html</a></p>
+<h1 id="基本功能"><a href="#基本功能" class="headerlink" title="基本功能"></a>基本功能</h1><p>客户端采用了UWP的技术,所以支持x86,x64,ARM平台,采用了响应式的布局.对手机进行了部分的优化.<br>对SQLite和本地存储进行了封装,支持缓存.<br>缓存支持同步和异步的两种方式,分别实现了两个接口:</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">internal</span> <span class="keyword">interface</span> <span class="title">IStorage</span></div><div class="line">&#123;</div><div class="line">    <span class="function"><span class="keyword">void</span> <span class="title">AddItem</span>(<span class="params"><span class="keyword">string</span> key, <span class="keyword">object</span> <span class="keyword">value</span></span>)</span>;</div><div class="line">    <span class="function"><span class="keyword">void</span> <span class="title">UpdateItem</span>(<span class="params"><span class="keyword">string</span> key, <span class="keyword">object</span> <span class="keyword">value</span></span>)</span>;</div><div class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">ContainItem</span>(<span class="params"><span class="keyword">string</span> key</span>)</span>;</div><div class="line">    <span class="function"><span class="keyword">void</span> <span class="title">FlushAll</span>(<span class="params"></span>)</span>;</div><div class="line">    T GetItem&lt;T&gt;(<span class="keyword">string</span> key) <span class="keyword">where</span> T : <span class="keyword">class</span>;</div><div class="line">    List&lt;T&gt; GetItems&lt;T&gt;(<span class="keyword">string</span> key) <span class="keyword">where</span> T : <span class="keyword">class</span>;</div><div class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">RemoveItem</span>(<span class="params"><span class="keyword">string</span> key</span>)</span>;</div><div class="line">    <span class="function"><span class="keyword">long</span> <span class="title">GetSize</span>(<span class="params"></span>)</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">interface</span> <span class="title">IStorageAsync</span></div><div class="line">&#123;</div><div class="line">    <span class="function">Task <span class="title">AddItemAsync</span>(<span class="params"><span class="keyword">string</span> key, <span class="keyword">object</span> <span class="keyword">value</span></span>)</span>;</div><div class="line">    <span class="function">Task <span class="title">UpdateItemAsync</span>(<span class="params"><span class="keyword">string</span> key, <span class="keyword">object</span> <span class="keyword">value</span></span>)</span>;</div><div class="line">    <span class="function">Task&lt;<span class="keyword">bool</span>&gt; <span class="title">ContainItemAsync</span>(<span class="params"><span class="keyword">string</span> key</span>)</span>;</div><div class="line">    <span class="function">Task <span class="title">FlushAllAsync</span>(<span class="params"></span>)</span>;</div><div class="line">    Task&lt;T&gt; GetItemAsync&lt;T&gt;(<span class="keyword">string</span> key) <span class="keyword">where</span> T : <span class="keyword">class</span>;</div><div class="line">    Task&lt;List&lt;T&gt;&gt; GetItemsAsync&lt;T&gt;(<span class="keyword">string</span> key) <span class="keyword">where</span> T : <span class="keyword">class</span>;</div><div class="line">    <span class="function">Task&lt;<span class="keyword">bool</span>&gt; <span class="title">RemoveItemAsync</span>(<span class="params"><span class="keyword">string</span> key</span>)</span>;</div><div class="line">    <span class="function"><span class="keyword">long</span> <span class="title">GetSize</span>(<span class="params"></span>)</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>通过Key和Value的方式实现增减删改.</p>
+<p>简单的封装了新浪微博的分享图片和文字的功能,可以在Config.cs文件中加入你自己的key和secret.<br><figure class="highlight csharp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">async</span> Task&lt;WeiboResult&gt; <span class="title">ShareTextAsync</span>(<span class="params"><span class="keyword">string</span> text</span>)</span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">if</span> (text == <span class="literal">null</span>)</div><div class="line">    &#123;</div><div class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> ArgumentNullException(<span class="keyword">nameof</span>(text));</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">if</span> (<span class="keyword">string</span>.IsNullOrWhiteSpace(text))</div><div class="line">    &#123;</div><div class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> ArgumentException(<span class="string">"Text could not be empty"</span>, <span class="keyword">nameof</span>(text));</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">if</span> (!UserInfo.CheckUseable())</div><div class="line">    &#123;</div><div class="line">        <span class="keyword">string</span> authorizeCode = <span class="keyword">await</span> <span class="keyword">this</span>.GetAuthorizeCodeAsync();</div><div class="line">        <span class="keyword">await</span> <span class="keyword">this</span>.Authorize(authorizeCode);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    Uri uri = <span class="keyword">new</span> Uri(<span class="string">"https://api.weibo.com/2/statuses/update.json"</span>);</div><div class="line"></div><div class="line">    Dictionary&lt;<span class="keyword">string</span>, <span class="keyword">string</span>&gt; pairs = <span class="keyword">new</span> Dictionary&lt;<span class="keyword">string</span>, <span class="keyword">string</span>&gt;();</div><div class="line">    pairs.Add(<span class="string">"access_token"</span>, UserInfo.Token);</div><div class="line">    pairs.Add(<span class="string">"status"</span>, text);</div><div class="line"></div><div class="line">    HttpFormUrlEncodedContent content = <span class="keyword">new</span> HttpFormUrlEncodedContent(pairs);</div><div class="line"></div><div class="line">    <span class="keyword">using</span> (HttpClient client = <span class="keyword">new</span> HttpClient())</div><div class="line">    &#123;</div><div class="line">        HttpResponseMessage response;</div><div class="line">        <span class="keyword">try</span></div><div class="line">        &#123;</div><div class="line">            response = <span class="keyword">await</span> client.PostAsync(uri, content);</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">catch</span> (Exception ex)</div><div class="line">        &#123;</div><div class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> Exception(<span class="string">"Network error"</span>, ex);</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">await</span> response.Content.ReadAsJsonAsync&lt;WeiboResult&gt;();</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">async</span> Task&lt;WeiboResult&gt; <span class="title">ShareImageAsync</span>(<span class="params"><span class="keyword">byte</span>[] image, <span class="keyword">string</span> text</span>)</span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">if</span> (image == <span class="literal">null</span>)</div><div class="line">    &#123;</div><div class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> ArgumentNullException(<span class="keyword">nameof</span>(image));</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">if</span> (text == <span class="literal">null</span>)</div><div class="line">    &#123;</div><div class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> ArgumentNullException(<span class="keyword">nameof</span>(text));</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">if</span> (<span class="keyword">string</span>.IsNullOrWhiteSpace(text))</div><div class="line">    &#123;</div><div class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> ArgumentException(<span class="string">"Text could not be empty"</span>, <span class="keyword">nameof</span>(text));</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">if</span> (!UserInfo.CheckUseable())</div><div class="line">    &#123;</div><div class="line">        <span class="keyword">string</span> authorizeCode = <span class="keyword">await</span> <span class="keyword">this</span>.GetAuthorizeCodeAsync();</div><div class="line">        <span class="keyword">await</span> <span class="keyword">this</span>.Authorize(authorizeCode);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    Uri uri = <span class="keyword">new</span> Uri(<span class="string">"https://upload.api.weibo.com/2/statuses/upload.json"</span>);</div><div class="line"></div><div class="line">    HttpBufferContent bufferContent = <span class="keyword">new</span> HttpBufferContent(image.AsBuffer());</div><div class="line"></div><div class="line">    HttpMultipartFormDataContent content = <span class="keyword">new</span> HttpMultipartFormDataContent();</div><div class="line"></div><div class="line">    content.Add(<span class="keyword">new</span> HttpStringContent(UserInfo.Token), <span class="string">"access_token"</span>);</div><div class="line">    content.Add(<span class="keyword">new</span> HttpStringContent(text), <span class="string">"status"</span>);</div><div class="line">    content.Add(bufferContent, <span class="string">"pic"</span>, <span class="string">"pic.jpg"</span>);</div><div class="line"></div><div class="line">    <span class="keyword">using</span> (HttpClient client = <span class="keyword">new</span> HttpClient())</div><div class="line">    &#123;</div><div class="line">        HttpResponseMessage response;</div><div class="line">        <span class="keyword">try</span></div><div class="line">        &#123;</div><div class="line">            response = <span class="keyword">await</span> client.PostAsync(uri, content);</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">catch</span> (Exception ex)</div><div class="line">        &#123;</div><div class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> Exception(<span class="string">"Network error"</span>, ex);</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">await</span> response.Content.ReadAsJsonAsync&lt;WeiboResult&gt;();</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">```    </div><div class="line">&gt;* 添加了对异步线程错误的处理和对异步Command的支持.  </div><div class="line"></div><div class="line">&gt; 异步线程的处理我在上一篇[《讲讲我在Windows10(uwp)开发中遇到的一些坑》](http:<span class="comment">//www.cnblogs.com/youngytj/p/4749004.html)已经说过了.这里说下贴一下异步Command的代码:</span></div><div class="line">```CSharp</div><div class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">AsyncCommand</span> : <span class="title">AsyncCommandBase</span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">private</span> <span class="keyword">readonly</span> Func&lt;Task&gt; command;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">AsyncCommand</span>(<span class="params">Func&lt;Task&gt; command</span>)</span></div><div class="line">    &#123;</div><div class="line">        <span class="keyword">this</span>.command = command;</div><div class="line">    &#125;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">override</span> <span class="keyword">bool</span> <span class="title">CanExecute</span>(<span class="params"><span class="keyword">object</span> parameter</span>)</span></div><div class="line">    &#123;</div><div class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">override</span> Task <span class="title">ExecuteAsync</span>(<span class="params"><span class="keyword">object</span> parameter</span>)</span></div><div class="line">    &#123;</div><div class="line">        <span class="keyword">return</span> command();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<blockquote>
+<ul>
+<li>支持下拉刷新和加载更多(但还有Bug).</li>
+</ul>
+<p>对于UWP的下拉刷新,我在博客园里看到了几种实现方式:</p>
+<p><a href="http://www.cnblogs.com/ms-uap/p/4814507.html" target="_blank" rel="external">UWP的一种下拉刷新实现</a></p>
+<p>只贴了一种,因为目前实现下拉刷新的方式都是ListView外部套一个ScrollViewer来实现,这种实现方式有个严重的问题就是:ListView内部也是有一个ScrollViewer,当滑动的时候,会出现ListView内部的ScrollViewer被压缩,这样直接导致了下拉刷新的失败.</p>
+<p>我这里思考了另一种方式,就是对ListView内部的ScrollViewer进行操作.<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">ScrollViewer</span> <span class="attr">Margin</span>=<span class="string">"0,0,0,-100"</span> <span class="attr">RenderTransformOrigin</span>=<span class="string">"0.5,0.5"</span> <span class="attr">x:Name</span>=<span class="string">"ScrollViewer"</span> <span class="attr">AutomationProperties.AccessibilityView</span>=<span class="string">"Raw"</span> <span class="attr">BringIntoViewOnFocusChange</span>=<span class="string">"&#123;TemplateBinding ScrollViewer.BringIntoViewOnFocusChange&#125;"</span> <span class="attr">HorizontalScrollMode</span>=<span class="string">"&#123;TemplateBinding ScrollViewer.HorizontalScrollMode&#125;"</span> <span class="attr">HorizontalScrollBarVisibility</span>=<span class="string">"&#123;TemplateBinding ScrollViewer.HorizontalScrollBarVisibility&#125;"</span> <span class="attr">IsHorizontalRailEnabled</span>=<span class="string">"&#123;TemplateBinding ScrollViewer.IsHorizontalRailEnabled&#125;"</span> <span class="attr">IsHorizontalScrollChainingEnabled</span>=<span class="string">"&#123;TemplateBinding ScrollViewer.IsHorizontalScrollChainingEnabled&#125;"</span> <span class="attr">IsVerticalScrollChainingEnabled</span>=<span class="string">"&#123;TemplateBinding ScrollViewer.IsVerticalScrollChainingEnabled&#125;"</span> <span class="attr">IsVerticalRailEnabled</span>=<span class="string">"&#123;TemplateBinding ScrollViewer.IsVerticalRailEnabled&#125;"</span> <span class="attr">IsDeferredScrollingEnabled</span>=<span class="string">"&#123;TemplateBinding ScrollViewer.IsDeferredScrollingEnabled&#125;"</span> <span class="attr">TabNavigation</span>=<span class="string">"&#123;TemplateBinding TabNavigation&#125;"</span> <span class="attr">VerticalScrollBarVisibility</span>=<span class="string">"&#123;TemplateBinding ScrollViewer.VerticalScrollBarVisibility&#125;"</span> <span class="attr">VerticalScrollMode</span>=<span class="string">"&#123;TemplateBinding ScrollViewer.VerticalScrollMode&#125;"</span> <span class="attr">ZoomMode</span>=<span class="string">"&#123;TemplateBinding ScrollViewer.ZoomMode&#125;"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">ScrollViewer.RenderTransform</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">CompositeTransform</span> <span class="attr">TranslateY</span>=<span class="string">"-100"</span> /&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">ScrollViewer.RenderTransform</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">Grid</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">Grid.RowDefinitions</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">RowDefinition</span> <span class="attr">Height</span>=<span class="string">"auto"</span> /&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">RowDefinition</span> <span class="attr">Height</span>=<span class="string">"*"</span> /&gt;</span></div><div class="line">        <span class="tag">&lt;/<span class="name">Grid.RowDefinitions</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">Border</span> <span class="attr">Height</span>=<span class="string">"&#123;TemplateBinding RefreshHeaderHeight&#125;"</span> <span class="attr">x:Name</span>=<span class="string">"PullToRefreshIndicator"</span> <span class="attr">Background</span>=<span class="string">"Transparent"</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">Grid</span> <span class="attr">HorizontalAlignment</span>=<span class="string">"Center"</span>&gt;</span></div><div class="line">                <span class="tag">&lt;<span class="name">Grid.ColumnDefinitions</span>&gt;</span></div><div class="line">                    <span class="tag">&lt;<span class="name">ColumnDefinition</span> <span class="attr">Width</span>=<span class="string">"auto"</span> /&gt;</span></div><div class="line">                    <span class="tag">&lt;<span class="name">ColumnDefinition</span> <span class="attr">Width</span>=<span class="string">"auto"</span> /&gt;</span></div><div class="line">                <span class="tag">&lt;/<span class="name">Grid.ColumnDefinitions</span>&gt;</span></div><div class="line">                <span class="tag">&lt;<span class="name">Grid</span> <span class="attr">Width</span>=<span class="string">"40"</span>&gt;</span></div><div class="line">                    <span class="tag">&lt;<span class="name">Viewbox</span> <span class="attr">x:Name</span>=<span class="string">"Arrow"</span> <span class="attr">Height</span>=<span class="string">"15"</span> <span class="attr">VerticalAlignment</span>=<span class="string">"Top"</span> <span class="attr">Margin</span>=<span class="string">"0,4,0,0"</span> <span class="attr">RenderTransformOrigin</span>=<span class="string">"0.5,0.5"</span>&gt;</span></div><div class="line">                        <span class="tag">&lt;<span class="name">Viewbox.RenderTransform</span>&gt;</span></div><div class="line">                            <span class="tag">&lt;<span class="name">CompositeTransform</span> <span class="attr">Rotation</span>=<span class="string">"180"</span> /&gt;</span></div><div class="line">                        <span class="tag">&lt;/<span class="name">Viewbox.RenderTransform</span>&gt;</span></div><div class="line">                        <span class="tag">&lt;<span class="name">Image</span> <span class="attr">Source</span>=<span class="string">"ms-appx:///Assets/arrow.png"</span> <span class="attr">Width</span>=<span class="string">"12"</span> <span class="attr">Height</span>=<span class="string">"12.9999"</span>/&gt;</span></div><div class="line">                        <span class="comment">&lt;!--&lt;Path</span></div><div class="line">            Width="12"</div><div class="line">            Height="12.9999"</div><div class="line">            Stretch="Fill"</div><div class="line">            Fill="&#123;TemplateBinding ArrowColor&#125;"</div><div class="line">            Data="M 20.4289,10.4376L 25,15.0087L 23.571,16.4376L 20.0291,12.8957L 20.0291,21.9999L 18.0083,21.9999L 18.0083,12.8583L 14.4289,16.4377L 13,15.0087L 17.5624,10.429L 19.0087,9" /&gt;--&gt;</div><div class="line">                    <span class="tag">&lt;/<span class="name">Viewbox</span>&gt;</span></div><div class="line">                <span class="tag">&lt;/<span class="name">Grid</span>&gt;</span></div><div class="line">                <span class="tag">&lt;<span class="name">TextBlock</span> <span class="attr">Grid.Column</span>=<span class="string">"1"</span> <span class="attr">x:Name</span>=<span class="string">"PullPart"</span> <span class="attr">Text</span>=<span class="string">"&#123;TemplateBinding PullPartTemplate&#125;"</span>/&gt;</span></div><div class="line">                <span class="tag">&lt;<span class="name">TextBlock</span> <span class="attr">Grid.Column</span>=<span class="string">"1"</span> <span class="attr">Visibility</span>=<span class="string">"Collapsed"</span> <span class="attr">x:Name</span>=<span class="string">"ReleasePart"</span> <span class="attr">Text</span>=<span class="string">"&#123;TemplateBinding ReleasePartTemplate&#125;"</span>/&gt;</span></div><div class="line">            <span class="tag">&lt;/<span class="name">Grid</span>&gt;</span></div><div class="line">        <span class="tag">&lt;/<span class="name">Border</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">ItemsPresenter</span> <span class="attr">FooterTransitions</span>=<span class="string">"&#123;TemplateBinding FooterTransitions&#125;"</span> <span class="attr">FooterTemplate</span>=<span class="string">"&#123;TemplateBinding FooterTemplate&#125;"</span> </span></div><div class="line">            <span class="attr">Footer</span>=<span class="string">"&#123;TemplateBinding Footer&#125;"</span> <span class="attr">HeaderTemplate</span>=<span class="string">"&#123;TemplateBinding HeaderTemplate&#125;"</span> <span class="attr">Header</span>=<span class="string">"&#123;TemplateBinding Header&#125;"</span> </div><div class="line">            <span class="attr">HeaderTransitions</span>=<span class="string">"&#123;TemplateBinding HeaderTransitions&#125;"</span> <span class="attr">Padding</span>=<span class="string">"&#123;TemplateBinding Padding&#125;"</span> <span class="attr">Grid.Row</span>=<span class="string">"1"</span>/&gt;</div><div class="line">    <span class="tag">&lt;/<span class="name">Grid</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">ScrollViewer</span>&gt;</span></div></pre></td></tr></table></figure></p>
+</blockquote>
+<p>对内部的ScrollViewer的压缩进行操作,这样能够比较精准的获取用户的下拉.</p>
+<p>同时我已经把这个代码封装成一个单独的控件,你可以从下面的链接获取到源码:</p>
+<p><a href="https://github.com/youngytj/uwp_PullToRefreshListview" target="_blank" rel="external">https://github.com/youngytj/uwp_PullToRefreshListview</a></p>
+<p>使用方式只要在xaml里添加如下代码即可使用:<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">local:PullToRefreshListView</span> <span class="attr">x:Name</span>=<span class="string">"lv"</span> </span></div><div class="line">        <span class="attr">PullPartTemplate</span>=<span class="string">"Pull"</span> <span class="attr">ReleasePartTemplate</span>=<span class="string">"Release"</span> </div><div class="line">        <span class="attr">RefreshContent</span>=<span class="string">"lv_RefreshContent"</span> <span class="attr">MoreContent</span>=<span class="string">"lv_MoreContent"</span>/&gt;</div><div class="line">```            </div><div class="line">PullPartTemplate和ReleasePartTemplate分别是下拉和释放时候的文字.然后后面是更新和加载更多时候的事件.</div><div class="line">使用了MVVMLight,所有的界面都以嵌入的方式放入MainPage中.</div><div class="line">MainPage里面通过ContentControl的来绑定内容</div><div class="line">```xml</div><div class="line"><span class="tag">&lt;<span class="name">ContentControl</span> <span class="attr">Content</span>=<span class="string">"&#123;Binding CurrentViewModel&#125;"</span> <span class="attr">ContentTemplate</span>=<span class="string">"&#123;Binding Path=CurrentTemplate&#125;"</span> <span class="attr">HorizontalContentAlignment</span>=<span class="string">"Stretch"</span> <span class="attr">VerticalContentAlignment</span>=<span class="string">"Stretch"</span>/&gt;</span></div></pre></td></tr></table></figure></p>
+<p>View和ViewModel的绑定放在了App.xaml<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">Application.Resources</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">ResourceDictionary</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">vm:ViewModelLocator</span> <span class="attr">x:Key</span>=<span class="string">"Locator"</span>/&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">DataTemplate</span> <span class="attr">x:Key</span>=<span class="string">"HomeViewModel"</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">view:HomeView</span>/&gt;</span></div><div class="line">        <span class="tag">&lt;/<span class="name">DataTemplate</span>&gt;</span></div><div class="line">        ...</div><div class="line"><span class="tag">&lt;/<span class="name">Application.Resources</span>&gt;</span></div><div class="line">```   </div><div class="line">这里有个注意的地方就是View只是作为一个资源的方式存在,当MainPage中发生页面转换时,会将ViewModel的名字作为一个Key(所以类名必须是Key)来寻找View.</div><div class="line">```CSharp</div><div class="line">public static class DataTemplateSelector</div><div class="line">&#123;</div><div class="line">    public static DataTemplate GetTemplate(ViewModelBase param)</div><div class="line">    &#123;</div><div class="line">        Type t = param.GetType();</div><div class="line">        if(!views.ContainsKey(t.Name))</div><div class="line">        &#123;</div><div class="line">            views.Add(t.Name, App.Current.Resources[t.Name] as DataTemplate);</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        return views[t.Name];</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h1 id="开源地址"><a href="#开源地址" class="headerlink" title="开源地址"></a>开源地址</h1><p>没有上传到市场,因为我这边网络一直上载不了包,如果网络环境好了以后再考虑上传,下面是Github的源码地址:</p>
+<p><a href="https://github.com/youngytj/uwp_AiJianShu" target="_blank" rel="external">Github</a></p>
+<h1 id="写在最后"><a href="#写在最后" class="headerlink" title="写在最后"></a>写在最后</h1><p>并不是很看好微软这种实现跨平台.除了目前UWP这门技术的不成熟,包括很多的缺失,诸如异步线程的处理问题,缺少对移动端的滑动的支持(不像android一样可以从底层开始实现一个行云流水般的手势操作,还有就是ScrollViewer依然存在之前的问题.),还有就是对于微软的这种跨平台的方式,我支持这种看法–<a href="http://www.cnblogs.com/happycharles/archive/2010/05/30/1747740.html" target="_blank" rel="external">因为硬件设备和运行环境的不同带来的用户体验的不同，才是跨平台最大的障碍！这一障碍，不是任何一个“技术”或“技术提供商”可以解决的！</a>.总体来说,因为是全新的平台,相应的开源组件比较少,上手还需要一些时间来熟悉这个平台,平台的不足之处也需要自己从无到有.</p>
+<p>这个客户端其实还有很多不好的地方,比如对于异步线程启动关闭的控制不足,缺少log,缺少对于缓存的系统的管理,还有导航系统的不足,不同网络的环境下的客户端优化的问题.但是我认为仅仅作为一个研究学习的项目,已经足够了.如果你喜欢或者支持这样的项目,帮忙点个推荐吧.</p>
+<p>以上,说完.谢谢.</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/UWP/" rel="tag">#UWP</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2013/08/02/Coolpy开源项目_1_Coolpy简介和开始/" rel="next" title="Coolpy开源项目:(1)Coolpy简介和开始">
+                <i class="fa fa-chevron-left"></i> Coolpy开源项目:(1)Coolpy简介和开始
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/07/08/Prism6(1)/" rel="prev" title="Prism6下的MEF：第一个Hello World">
+                Prism6下的MEF：第一个Hello World <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="https://avatars2.githubusercontent.com/u/4630470?v=3&s=460"
+               alt="youngytj" />
+          <p class="site-author-name" itemprop="name">youngytj</p>
+          <p class="site-description motion-element" itemprop="description">博观而约取，厚积而薄发。</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">13</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">13</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/youngytj" target="_blank" title="Github">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  Github
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://insights.thoughtworkers.org/reading-radar-2016/" target="_blank" title="读书雷达">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  读书雷达
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://kanbanflow.com/" target="_blank" title="KanbanFlow">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  KanbanFlow
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#简介"><span class="nav-text">简介</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#基本界面"><span class="nav-text">基本界面</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#基本功能"><span class="nav-text">基本功能</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#开源地址"><span class="nav-text">开源地址</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#写在最后"><span class="nav-text">写在最后</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2013 - 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">youngytj</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+  
+  
+  
+
+  
+
+  
+
+</body>
+</html>
