@@ -1,0 +1,14 @@
+---
+title: 石洞
+baseurl: "/"
+markdown: kramdown
+gems:
+- jekyll-paginate
+exclude:
+  - .jekyll-metadata
+  - README.md
+  - CNAME
+paginate: 20
+paginate_path: "/:num/"
+highlighter: rouge
+permalink: pretty
