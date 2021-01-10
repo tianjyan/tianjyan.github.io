@@ -1,13 +1,13 @@
 <div class="buttons">
 {% if paginator.previous_page %}
     <span class="button">
-        <a href="{{ site.baseurl }}/{{ paginator.previous_page_path }}">[ <- 上一页 ]</a>
+        <a href="{{ paginator.previous_page_path }}">[ <- 上一页 ]</a>
     </span>
 {% else %}
 {% endif %}
 {% if paginator.next_page %}
     <span class="button">
-        <a href="{{ site.baseurl }}/{{ paginator.next_page_path }}">[ 下一页 -> ]</a>
+        <a href="{{ paginator.next_page_path }}">[ 下一页 -> ]</a>
     </span>
 {% else %}
 {% endif %}
