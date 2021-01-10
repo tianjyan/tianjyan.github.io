@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>PayloadContent</key>
+	<array>
+		<dict>
+			<key>AutoJoin</key>
+			<true/>
+			<key>EncryptionType</key>
+			<string>WPA</string>
+			<key>HIDDEN_NETWORK</key>
+			<false/>
+			<key>IsHotspot</key>
+			<false/>
+			<key>Password</key>
+			<string>B4D6A31C134B88A4</string>
+			<key>PayloadDescription</key>
+			<string>Configures Wi-Fi settings</string>
+			<key>PayloadDisplayName</key>
+			<string>Wi-Fi</string>
+			<key>PayloadIdentifier</key>
+			<string>com.apple.wifi.managed.C0DD09E0-237A-41F0-8D3D-C945096CE93F</string>
+			<key>PayloadType</key>
+			<string>com.apple.wifi.managed</string>
+			<key>PayloadUUID</key>
+			<string>B623B6D8-5700-441D-A4DB-D7E534DE9FF8</string>
+			<key>PayloadVersion</key>
+			<real>1</real>
+			<key>ProxyType</key>
+			<string>None</string>
+			<key>SSID_STR</key>
+			<string>YOUNG-HOME_EXT</string>
+			<key>ServiceProviderRoamingEnabled</key>
+			<false/>
+			<key>_UsingHotspot20</key>
+			<false/>
+		</dict>
+		<dict>
+			<key>AutoJoin</key>
+			<true/>
+			<key>EncryptionType</key>
+			<string>WPA</string>
+			<key>HIDDEN_NETWORK</key>
+			<false/>
+			<key>IsHotspot</key>
+			<false/>
+			<key>Password</key>
+			<string>B4D6A31C134B88A4</string>
+			<key>PayloadDescription</key>
+			<string>Configures Wi-Fi settings</string>
+			<key>PayloadDisplayName</key>
+			<string>Wi-Fi</string>
+			<key>PayloadIdentifier</key>
+			<string>com.apple.wifi.managed.228F6A4F-F5E8-4182-81F3-EFD7488F563B</string>
+			<key>PayloadType</key>
+			<string>com.apple.wifi.managed</string>
+			<key>PayloadUUID</key>
+			<string>C5F2BDBB-F57F-40C6-A1AD-34BCF7422B00</string>
+			<key>PayloadVersion</key>
+			<real>1</real>
+			<key>ProxyType</key>
+			<string>None</string>
+			<key>SSID_STR</key>
+			<string>YOUNG-HOME</string>
+			<key>ServiceProviderRoamingEnabled</key>
+			<false/>
+			<key>_UsingHotspot20</key>
+			<false/>
+		</dict>
+	</array>
+	<key>PayloadDescription</key>
+	<string> 连接WiFi的配置文件</string>
+	<key>PayloadDisplayName</key>
+	<string>YOUNG-HOME-WIFI-PROFILE</string>
+	<key>PayloadIdentifier</key>
+	<string>yangtianjiedemacbook-pro.local.0B69B827-9140-4EC5-9EC4-4BADF236DA77</string>
+	<key>PayloadRemovalDisallowed</key>
+	<false/>
+	<key>PayloadType</key>
+	<string>Configuration</string>
+	<key>PayloadUUID</key>
+	<string>53E8E840-F580-4D15-A9F0-1B9B11AA9ED4</string>
+	<key>PayloadVersion</key>
+	<integer>1</integer>
+</dict>
+</plist>
