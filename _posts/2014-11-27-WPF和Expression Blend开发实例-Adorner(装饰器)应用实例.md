@@ -1,4 +1,5 @@
 ---
+layout: post
 title: WPF和Expression Blend开发实例：Adorner(装饰器)应用实例
 date: 2014-11-27 21:15:58
 tags: [WPF]

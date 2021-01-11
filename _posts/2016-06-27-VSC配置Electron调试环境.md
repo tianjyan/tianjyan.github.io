@@ -1,4 +1,5 @@
 ---
+layout: post
 title: VSC配置Electron调试环境
 date: 2016-06-27 21:15:58
 tags: [Visual Studio Code]

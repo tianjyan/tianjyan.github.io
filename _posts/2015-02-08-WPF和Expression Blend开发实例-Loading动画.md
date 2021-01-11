@@ -1,4 +1,5 @@
 ---
+layout: post
 title: WPF和Expression Blend开发实例:Loading动画
 date: 2015-02-08 21:15:58
 tags: [WPF]

@@ -1,4 +1,5 @@
 ---
+layout: post
 title: Java和C#对比(4):C#有但Java没有的地方
 date: 2016-07-01 21:15:58
 tags: [Java Vs C#]

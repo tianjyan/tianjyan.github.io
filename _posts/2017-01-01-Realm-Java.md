@@ -1,4 +1,5 @@
 ---
+layout: post
 title: Android下Realm使用的2、3事
 date: 2017-01-01 20:15:58
 tags: [Android, SQLite, Realm]

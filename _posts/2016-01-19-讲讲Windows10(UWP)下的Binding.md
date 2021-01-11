@@ -1,4 +1,5 @@
 ---
+layout: post
 title: 讲讲Windows10(UWP)下的Binding
 date: 2016-01-19 21:15:58
 tags: [UWP]

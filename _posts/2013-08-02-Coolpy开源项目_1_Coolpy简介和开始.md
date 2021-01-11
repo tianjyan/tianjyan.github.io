@@ -1,4 +1,5 @@
 ---
+layout: post
 title: Coolpy开源项目:(1)Coolpy简介和开始
 date: 2013-08-02 21:15:58
 tags: [Arduino,Windows Phone]

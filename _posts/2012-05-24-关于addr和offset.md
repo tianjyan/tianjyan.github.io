@@ -1,4 +1,5 @@
 ---
+layout: post
 title: 关于addr和offset
 date: 2012-05-24 21:15:58
 tags: [Win32]

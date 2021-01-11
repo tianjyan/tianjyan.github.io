@@ -1,4 +1,5 @@
 ---
+layout: post
 title: WPF和Expression Blend开发实例:充分利用Blend实现一个探照灯的效果
 date: 2015-01-10 21:15:58
 tags: [WPF]

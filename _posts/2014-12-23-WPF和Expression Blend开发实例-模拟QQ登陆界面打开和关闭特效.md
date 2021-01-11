@@ -1,4 +1,5 @@
 ---
+layout: post
 title: WPF和Expression Blend开发实例:模拟QQ登陆界面打开和关闭特效
 date: 2014-12-23 21:15:58
 tags: [WPF]

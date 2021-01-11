@@ -1,4 +1,5 @@
 ---
+layout: post
 title: How can I retrieve the virtual MAC address from the Wi-Fi Range Extender to setup an Access List?
 date: 2016-02-13 21:15:58
 tags: [路由器]

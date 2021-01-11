@@ -1,4 +1,5 @@
 ---
+layout: post
 title: WPF和Expression Blend开发实例:一个样式实现的数字输入框
 date: 2015-03-15 21:15:58
 tags: [WPF]

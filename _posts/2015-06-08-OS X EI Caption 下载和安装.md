@@ -1,4 +1,5 @@
 ---
+layout: post
 title: EI Caption 下载和U盘安装
 date: 2015-06-08 21:15:58
 tags: [Mac]

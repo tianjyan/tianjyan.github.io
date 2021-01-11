@@ -1,4 +1,5 @@
 ---
+layout: post
 title: Windows10(UWP)下的MEF
 date: 2016-01-09 21:15:58
 tags: [UWP]

@@ -1,4 +1,5 @@
 ---
+layout: post
 title: 从微信SDK看ProtoBuffer文件的生成
 date: 2016-07-22 21:15:58
 tags: [ProtoBuffer]

@@ -1,4 +1,5 @@
 ---
+layout: post
 title: Ubuntu 14.04 LTS Server Apache 安装
 date: 2016-11-29 20:15:58
 tags: [Linux]

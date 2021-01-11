@@ -1,4 +1,5 @@
 ---
+layout: post
 title: Java和C#对比(1):基本一致的地方
 date: 2016-06-28 21:15:58
 tags: [Java Vs C#]

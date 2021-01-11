@@ -1,4 +1,5 @@
 ---
+layout: post
 title: Java和C#对比(2):功能一致但是语法不同的地方
 date: 2016-06-29 21:15:58
 tags: [Java Vs C#]

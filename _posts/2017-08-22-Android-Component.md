@@ -1,4 +1,5 @@
 ---
+layout: post
 title: 由客户端内部通讯引发的插件化开发的随想和实践
 date: 2017-08-22 20:15:58
 tags: [Android]
@@ -37,7 +38,7 @@ categories: [Java]
 
 首先看下Trail和Standard的实现: 
 
-```CSharp
+~~~CSharp
 namespace MailAccount.Extra.Trial
 {
     [Export("Trial", typeof(IUserAction))]
@@ -53,7 +54,7 @@ namespace MailAccount.Extra.Trial
         }
     }
 }
-```
+~~~
 
 ```CSharp
 namespace MailAccount.Extra.Standard

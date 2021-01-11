@@ -1,4 +1,5 @@
 ---
+layout: post
 title: Ubuntu 14.04 LTS Server设置开机启动
 date: 2016-11-28 21:15:58
 tags: [Linux]

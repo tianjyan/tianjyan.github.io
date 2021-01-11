@@ -1,4 +1,5 @@
 ---
+layout: post
 title: 树莓派配置Nas
 date: 2016-02-28 21:15:58
 tags: [树莓派]

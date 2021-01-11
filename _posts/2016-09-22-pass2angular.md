@@ -1,4 +1,5 @@
 ---
+layout: post
 title: Node向Angular传值方式简析
 date: 2016-09-22 21:15:58
 tags: [Node]

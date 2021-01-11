@@ -1,4 +1,5 @@
 ---
+layout: post
 title: WP开发实例：在wp中实现Android和ios中的菜单栏
 date: 2013-07-11 21:15:58
 tags: [Windows Phone]

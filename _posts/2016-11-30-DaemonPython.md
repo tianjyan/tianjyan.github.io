@@ -1,4 +1,5 @@
 ---
+layout: post
 title: Ubuntu 14.04 LTS Server 下Python的守护进程实现
 date: 2016-11-30 20:15:58
 tags: [Linux]
