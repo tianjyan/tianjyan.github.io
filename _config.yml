@@ -2,7 +2,7 @@
 layout: post
 title: 石洞
 baseurl: ""
-markdown: kramdown
+markdown: GFM
 plugins:
 - jekyll-paginate
 exclude:
@@ -12,9 +12,4 @@ exclude:
 paginate: 20
 paginate_path: "/:num/"
 highlighter: rouge
-kramdown:
-  input: GFM
-  hard_wrap: false
-  syntax_highlighter: rouge
-  extensions: fenced_code_blocks
 permalink: pretty
