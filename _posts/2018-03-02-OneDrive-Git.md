@@ -1,3 +1,11 @@
+---
+layout: post
+title: OneDrive里面添加Git Repo
+date: 2018-03-02 20:15:58
+tags: [Msic]
+categories: [Msic]
+---
+
 https://code.visualstudio.com/docs/languages/java
 https://stackoverflow.com/questions/14017364/how-to-create-java-gradle-project
 https://gradle.org/install/
