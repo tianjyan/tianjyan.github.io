@@ -1,6 +1,7 @@
 GIT
   remote: https://github.com/tianjyan/minima.git
-  revision: 3cdd14dff1216f561c68329e0b7420c2dc9b796a
+  revision: 4875be18ef008f49060bbfb8194b72c3a8b4040c
+  ref: 4875be18ef008f49060bbfb8194b72c3a8b4040c
   specs:
     minima (2.5.1)
       jekyll (>= 3.5, < 5.0)
