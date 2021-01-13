@@ -75,7 +75,7 @@ ATX直插电源：
 ![路由器后台登录界面](https://raw.githubusercontent.com/tianjyan/tianjyan.github.io/master/images/2021-01-13-15.png)
 
 路由器登录界面：
-![路由器登录界面](https://raw.githubusercontent.com/tianjyan/tianjyan.github.io/master/images/2021-01-13-14.png)
+![路由器登录界面](https://raw.githubusercontent.com/tianjyan/tianjyan.github.io/master/images/2021-01-13-16.png)
 
 
 ---
