@@ -77,8 +77,55 @@ ATX直插电源：
 路由器登录界面：
 ![路由器登录界面](https://raw.githubusercontent.com/tianjyan/tianjyan.github.io/master/images/2021-01-13-16.png)
 
+## 配置虚拟路由器
 
----
+登录路由器之后，需要设置LAN口的基本信息，包括默认网关，广播，DNS，是否桥接以及DHCP信息。
 
-未完待续
+设置LAN口：
+![设置LAN口](https://raw.githubusercontent.com/tianjyan/tianjyan.github.io/master/images/2021-01-13-17.png)
+![设置LAN口](https://raw.githubusercontent.com/tianjyan/tianjyan.github.io/master/images/2021-01-13-18.png)
+![设置LAN口](https://raw.githubusercontent.com/tianjyan/tianjyan.github.io/master/images/2021-01-13-19.png)
+![设置LAN口](https://raw.githubusercontent.com/tianjyan/tianjyan.github.io/master/images/2021-01-13-20.png)
 
+之后在防火墙这边添加规则`iptables -t nat -I POSTROUTING -j MASQUERADE`
+
+设置防火墙规则：
+![设置防火墙规则](https://raw.githubusercontent.com/tianjyan/tianjyan.github.io/master/images/2021-01-13-21.png)
+
+然后可以安装科学上网的插件，通过离线下载安装，安装包地址：https://github.com/hq450/fancyss_history_package/tree/master/fancyss_X64
+
+插件下载完成后：
+![插件下载完成后](https://raw.githubusercontent.com/tianjyan/tianjyan.github.io/master/images/2021-01-13-22.png)
+
+然后进入插件配置科学上网的基本信息即可。到此的话，虚拟路由器这边的设置就完成了。
+
+## 如何在客户端使用
+
+在客户端这边的使用的话，方式有很多，具体如下：
+
+### 在主路由修改默认网关
+
+将主路由的默认网关设置为虚拟路由器的IP，即可实现局域网内所有的设备都通过虚拟路由器上网
+
+设置主路由默认网关：
+![设置主路由默认网关](https://raw.githubusercontent.com/tianjyan/tianjyan.github.io/master/images/2021-01-13-23.png)
+
+### 特定设备通过虚拟路由上网
+
+如果不想设置主路由，可以将客户端的DNS和网关设置为虚拟路由的IP
+
+设置特定设备信息：
+![设置特定设备信息](https://raw.githubusercontent.com/tianjyan/tianjyan.github.io/master/images/2021-01-13-26.png)
+![设置特定设备信息](https://raw.githubusercontent.com/tianjyan/tianjyan.github.io/master/images/2021-01-13-27.png)
+
+### 特定设备直接通过科学上网开放端口上网
+
+也可以直连科学上网软件开放的端口上网
+
+直连科学上网软件：
+![直连科学上网软件](https://raw.githubusercontent.com/tianjyan/tianjyan.github.io/master/images/2021-01-13-24.png)
+![直连科学上网软件](https://raw.githubusercontent.com/tianjyan/tianjyan.github.io/master/images/2021-01-13-25.png)
+
+## 结尾
+
+上述就是群晖设置一个虚拟路由，然后局域网设备通过其上网的全部过程。
