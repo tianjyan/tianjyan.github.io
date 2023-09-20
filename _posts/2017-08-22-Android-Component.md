@@ -3,7 +3,7 @@ layout: post
 title: 由客户端内部通讯引发的插件化开发的随想和实践
 date: 2017-08-22 20:15:58
 tags: [Android]
-categories: [Java]
+categories: [java]
 ---
 ## 背景
 最近在写一个基于Android的IPC实现的一个小工具，主要实现的就是能够在手机查看被监视程序的值的变化和日志等。因为用了入侵的方式，所以需要被监视APK集成一个SDK。程序界面一览:  
@@ -38,7 +38,7 @@ categories: [Java]
 
 首先看下Trail和Standard的实现: 
 
-~~~CSharp
+~~~csharp
 namespace MailAccount.Extra.Trial
 {
     [Export("Trial", typeof(IUserAction))]
@@ -56,7 +56,7 @@ namespace MailAccount.Extra.Trial
 }
 ~~~
 
-```CSharp
+```csharp
 namespace MailAccount.Extra.Standard
 {
     [Export("Standard", typeof(IUserAction))]
@@ -74,7 +74,7 @@ Trail和Standard都实现了IUserAction的接口，并对其中功能做了自�
 
 再看下MailAccount中启动的时候做了什么：
 
-```CSharp
+```csharp
 public class Bootstrapper
     {
         private const string SEARCH_PATTERN = "MailAccount.Extra.*.dll";
@@ -195,7 +195,7 @@ public class Bootstrapper
 
 选择完依赖注入的框架后，我定义了整个程序的层次结构。每一个框都作为一个独立的Module存在，方便单独的Module的管理。那么我在Plugin这块是怎么实践的呢？假设我们要新增一个plugin，我需要做些什么？正如开始所说的，因为通信方式中，我选择了使用接口，所以我首先要定义一个接口。以出参监视功能为例，我需要定义一个`IOutParaPlugin`接口：
 
-```Java
+```java
 public interface IOutParaPlugin extends IPlugin {
     boolean isGathering();
     void setIsGathering(boolean isGathering);
@@ -207,7 +207,7 @@ public interface IOutParaPlugin extends IPlugin {
 
 `IPlugin`是我们所有插件的接口类，其主要功能是提供功能的名称和功能入口UI：
 
-```Java
+```java
 public interface IPlugin {
     String getPluginName();
     Fragment getPluginFragment();
@@ -221,7 +221,7 @@ public interface IPlugin {
 
 除了实现了基本的Plugin的功能外，我们还要声明一个module的类来供Dagger生成编译时的信息。
 
-```Java
+```java
 @Module
 public abstract class OutParaModule {
     @Provides
@@ -254,7 +254,7 @@ public abstract class OutParaModule {
 
 定义完Module以后，我们要在主app中引用：
 
-```Java
+```java
 @Singleton
 @Component(modules = {
         LBAppModule.class,
@@ -274,13 +274,13 @@ interface LBComponent extends AndroidInjector<LBApp> {
 
 这样，在主app的`MainActiviy`中我们可以这样引用：
 
-```Java
+```java
 @Inject @Named(AliasName.OUT_PARA_PLUGIN) IOutParaPlugin outPlugin;
 ```
 
 在Activity被`onCreate`的时候注入并获取`OutParaPlugin`的实例：
 
-```Java
+```java
 @Override
 protected void onCreate(Bundle savedInstanceState) {
     AndroidInjection.inject(this);
