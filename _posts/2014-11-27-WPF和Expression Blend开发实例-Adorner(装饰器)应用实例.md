@@ -84,4 +84,4 @@ if (adornerLayer != null)
 ```
 效果图:
 
-![Image](https://raw.githubusercontent.com/tianjyan/tianjyan.github.io/master/images/2014-11-27-WPFAdorner-01.png)
+![Image](/images/2014-11-27-WPFAdorner-01.png)

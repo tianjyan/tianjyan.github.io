@@ -36,48 +36,48 @@ Coolpy是一项基于Arduino开发的开源项目，其主要功能就是通过�
 
 ## Step 4：
 > 打开arduino.exe后，单击File→Open，找到Cool硬件ROM源代码下的WPadkArduino0023.pde文件打开。  
-![image](https://raw.githubusercontent.com/tianjyan/tianjyan.github.io/master/images/2013-08-02-Coolpy-01.jpg)  
+![image](/images/2013-08-02-Coolpy-01.jpg)  
 
 ## Step 5：
 > 打开后我们会看到下图的内容:  
-![image](https://raw.githubusercontent.com/tianjyan/tianjyan.github.io/master/images/2013-08-02-Coolpy-02.jpg)  
+![image](/images/2013-08-02-Coolpy-02.jpg)  
 
 ## Step 6：
 > 现在的话我们还不能直接将程序烧写到Arduino里，我们还有在程序的开头添加一句代码：
 <pre><code>#include&lt;SPI.h&gt;</code></pre>
 然后效果应该是这样的:  
-![image](https://raw.githubusercontent.com/tianjyan/tianjyan.github.io/master/images/2013-08-02-Coolpy-03.jpg)  
+![image](/images/2013-08-02-Coolpy-03.jpg)  
 
 ## Step 7：
 > 接下来我们就可以连接上我们的主板Arduino。(有关Arduino的驱动安装和端口设置请参照购买时店家提供的说明)。  
 点击工具栏的Upload按钮，如下图所示:  
-![image](https://raw.githubusercontent.com/tianjyan/tianjyan.github.io/master/images/2013-08-02-Coolpy-04.jpg)  
+![image](/images/2013-08-02-Coolpy-04.jpg)  
 等待片刻，当出现Done Uploading的时候，即为完成，如图所示:   
-![image](https://raw.githubusercontent.com/tianjyan/tianjyan.github.io/master/images/2013-08-02-Coolpy-05.jpg)  
+![image](/images/2013-08-02-Coolpy-05.jpg)  
 
 ## Step 8：
 > 已经完成我们的程序烧写，现在我们要完成硬件电路的连接。将Arduino Uno R3 板子和W5100引脚和端口对应插入，如图所示:  
-![image](https://raw.githubusercontent.com/tianjyan/tianjyan.github.io/master/images/2013-08-02-Coolpy-06.jpg)  
+![image](/images/2013-08-02-Coolpy-06.jpg)  
 然后将Arduino接电源，W5100的网络口插路由器的Lan口，最终效果如图所示:  
-![image](https://raw.githubusercontent.com/tianjyan/tianjyan.github.io/master/images/2013-08-02-Coolpy-07.jpg)   
+![image](/images/2013-08-02-Coolpy-07.jpg)   
 
 ## Step 9：
 > 好了，硬件我们已经连接完成了，离成功只差一小步了。我们先稍等一会，等Arduino和路由器完全连接上。
 Ok。打开我们的Coolpy_Windows客户端(其他客户端也可以进行操作，请参考此过程执行)。将电脑连接到Arduino所连接的路由。我们的客户端如图所示：  
-![image](https://raw.githubusercontent.com/tianjyan/tianjyan.github.io/master/images/2013-08-02-Coolpy-08.jpg)   
+![image](/images/2013-08-02-Coolpy-08.jpg)   
 
 因为现在只是做简单的介绍和演示，所以不介绍更多内容。我们先不改动任何其他的内容，先只是简单的建立一个Arduino和我们电脑的连接。
 
 ## Step 10：
 > 点击”连接硬件”，当提示已连接的时候，我们再点击”重置硬件”，这时候界面会出现如下内容：    
-![image](https://raw.githubusercontent.com/tianjyan/tianjyan.github.io/master/images/2013-08-02-Coolpy-09.jpg)    
+![image](/images/2013-08-02-Coolpy-09.jpg)    
 这就说明我们的客户端硬件和Arduino建立了连接，可以直接其他的操作了。
 
 因为本次教程只是对这个开源项目做一个简单的介绍，所以上面的内容只是建立了一个简单的连接，但是只是阅读上面的内容，很难感受到具体的功能。所以我做了一个很简单的功能演示。通过一个温度湿度传感器来获得室内的温湿度。
 
 ## Step 11：
 > 将温湿度传感器连接到Arduino板子上，点击”截取温湿度”按钮，就会看到如下内容：  
-![image](https://raw.githubusercontent.com/tianjyan/tianjyan.github.io/master/images/2013-08-02-Coolpy-10.jpg)   
+![image](/images/2013-08-02-Coolpy-10.jpg)   
 
 具体的硬件连接和实现原理，我们在下次教程中再做介绍。
 

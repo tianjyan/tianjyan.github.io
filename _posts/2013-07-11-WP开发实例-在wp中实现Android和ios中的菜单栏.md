@@ -9,7 +9,7 @@ categories: [CSharp]
 
 其实wp中有类似安卓菜单栏的应用也不是没见过，比如说zaker里内置的微博。
 
-![Image](https://raw.githubusercontent.com/tianjyan/tianjyan.github.io/master/images/2013-07-11-WP%E5%AE%89%E5%8D%93%E8%8F%9C%E5%8D%95-01.jpg)
+![Image](/images/2013-07-11-WP%E5%AE%89%E5%8D%93%E8%8F%9C%E5%8D%95-01.jpg)
 
 大致想了一下实现的的方法，思路如下:  
 要想实现安卓的菜单栏的效果，首先要有一个控件有一组选项，并且选项与选项之间必须是互斥的，很容易想到就是单选按钮(RadioButton)。然后这个互斥之外，还必须有个效果，就是整个按钮整个选择，查阅了一下msdn，最终选择了ToggleButton。所以整个控件的实现就是，用ToggleButton作为RadioButton的模板，最终可以实现效果。
@@ -140,6 +140,6 @@ private void RadioButton_Checked(object sender, RoutedEventArgs e)
 }
 ```    
 至此，所有工作完成，看一下效果：  
-![Image](https://raw.githubusercontent.com/tianjyan/tianjyan.github.io/master/images/2013-07-11-WP%E5%AE%89%E5%8D%93%E8%8F%9C%E5%8D%95-02.jpg)
-![Image](https://raw.githubusercontent.com/tianjyan/tianjyan.github.io/master/images/2013-07-11-WP%E5%AE%89%E5%8D%93%E8%8F%9C%E5%8D%95-03.jpg)  
+![Image](/images/2013-07-11-WP%E5%AE%89%E5%8D%93%E8%8F%9C%E5%8D%95-02.jpg)
+![Image](/images/2013-07-11-WP%E5%AE%89%E5%8D%93%E8%8F%9C%E5%8D%95-03.jpg)  
 当然，要想定制更加真实好看的效果，可以自己修改实现。  

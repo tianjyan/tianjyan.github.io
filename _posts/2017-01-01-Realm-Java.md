@@ -6,7 +6,7 @@ tags: [Android, SQLite, Realm]
 categories: [Java]
 ---
 
-![HongKongEye](https://raw.githubusercontent.com/tianjyan/tianjyan.github.io/master/images/2017-01-01-realm-00.jpg)
+![HongKongEye](/images/2017-01-01-realm-00.jpg)
 
 # 写在开始之前
 SQL自从上世纪70年代诞生以来，就一直是数据库查询的主流语言。不得不承认SQL的出现极大的方便了我们检索和更新数据。不过在我们日常的开发中，其实并未有太多的数据量，也没有太多的表结构，也不是有很多的连表查询的需求，所以对于我们来说，使用SQL来检索数据有点太过繁琐。我们需要做的事情可能仅仅是把用户生成的数据对象快速的缓存起来。NoSQL数据库就很适合我们的这些场景。以Mongodb，Redis为代表的NoSQL都引入了一些相对现代化的方式存储数据，比如支持Json，Document的概念，流式api，数据变更通知等等，极大程度的降低了我们学习的成本提高了我们的开发效率。<!-- more -->相比于SQL，NoSQL有以下的优势：
@@ -19,11 +19,11 @@ SQL自从上世纪70年代诞生以来，就一直是数据库查询的主流语
 Realm作为一个移动端的NoSQL的代码，官方的定位就是取代SQLite等在移动端的关系型数据库。从官方的[性能测试](https://realm.io/news/introducing-realm/#fast)来看，我们可以看到官方对取代SQLite等数据库的信心：
 
 > 每秒能在20万条数据中进行查询后count的次数。realm每秒可以进行30.9次查询后count。
-> ![RealmFast](https://raw.githubusercontent.com/tianjyan/tianjyan.github.io/master/images/2017-01-01-realm-01.png)
+> ![RealmFast](/images/2017-01-01-realm-01.png)
 > 在20万条中进行一次遍历查询，数据和前面的count相似：realm一秒可以遍历20万条数据31次，而coredata只能进行两次查询。
-> ![RealmFast](https://raw.githubusercontent.com/tianjyan/tianjyan.github.io/master/images/2017-01-01-realm-02.png)
+> ![RealmFast](/images/2017-01-01-realm-02.png)
 > 这是在一次事务每秒插入数据的对比，realm每秒可以插入9.4万条记录，在这个比较里纯SQLite的性能最好，每秒可以插入17.8万条记录。然而封装了SQLite的FMDB的成绩大概是realm的一半。
-> ![RealmFast](https://raw.githubusercontent.com/tianjyan/tianjyan.github.io/master/images/2017-01-01-realm-03.png)
+> ![RealmFast](/images/2017-01-01-realm-03.png)
 
 我大概花了一周的时间去了解Realm这个数据库在Android上的使用，并在我的[玩具项目](https://github.com/youngytj/android_MyPassword)上进行了实践。因为这些开始时间不久的开源项目在API上的变动上比较大，所以以下的内容仅仅适用于Realm For Java版本号为2.2.1的情形。
 
@@ -48,7 +48,7 @@ buildscript {
 然后在app的build.gradle中引用`apply plugin: 'realm-android'`即可。
 
 ## 在Eclipse中使用
-![Fun](https://raw.githubusercontent.com/tianjyan/tianjyan.github.io/master/images/2017-01-01-realm-04.jpg)
+![Fun](/images/2017-01-01-realm-04.jpg)
 
 # 初见：获取一个Realm的实例并创建一个实体
 

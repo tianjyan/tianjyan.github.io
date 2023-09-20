@@ -62,7 +62,7 @@ public string GetMessageFromServer(string server)
 }
 ```
 上面的代码取自.NET框架Beta2文档的Socket类。注意到，在这段代码中没有捕获异常。如下是根据文档得出的这个方法可能抛出的异常：  
-![img](https://raw.githubusercontent.com/tianjyan/tianjyan.github.io/master/images/2016-07-02-Java-CSharp-Diff-01.png)
+![img](/images/2016-07-02-Java-CSharp-Diff-01.png)
 
 ## 2.扩展
 Java扩展机制允许开发者扩展核心Java平台。开发者可以创建让Java运行时当做认为是核心Java类的类和包，比如java.lang, java.util, java.net等。

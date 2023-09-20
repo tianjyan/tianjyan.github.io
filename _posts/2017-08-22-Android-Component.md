@@ -8,14 +8,14 @@ categories: [Java]
 # 背景
 最近在写一个基于Android的IPC实现的一个小工具，主要实现的就是能够在手机查看被监视程序的值的变化和日志等。因为用了入侵的方式，所以需要被监视APK集成一个SDK。程序界面一览:  
 
-<img src="https://raw.githubusercontent.com/tianjyan/tianjyan.github.io/master/images/2017-08-22-Android-Component-01.png" width="240">
-<img src="https://raw.githubusercontent.com/tianjyan/tianjyan.github.io/master/images/2017-08-22-Android-Component-02.png" width="240">
-<img src="https://raw.githubusercontent.com/tianjyan/tianjyan.github.io/master/images/2017-08-22-Android-Component-03.png" width="240">
-<img src="https://raw.githubusercontent.com/tianjyan/tianjyan.github.io/master/images/2017-08-22-Android-Component-04.png" width="240">  
+<img src="/images/2017-08-22-Android-Component-01.png" width="240">
+<img src="/images/2017-08-22-Android-Component-02.png" width="240">
+<img src="/images/2017-08-22-Android-Component-03.png" width="240">
+<img src="/images/2017-08-22-Android-Component-04.png" width="240">  
 <!--
 工程结构以及SDK简单示例:  
-![06](https://raw.githubusercontent.com/tianjyan/tianjyan.github.io/master/images/2017-08-22-Android-Component-06.png)
-![05](https://raw.githubusercontent.com/tianjyan/tianjyan.github.io/master/images/2017-08-22-Android-Component-05.png)
+![06](/images/2017-08-22-Android-Component-06.png)
+![05](/images/2017-08-22-Android-Component-05.png)
 !-->
 大概还是一个半成品的样子，后续会写一些Root以后才有的功能。
 
@@ -30,7 +30,7 @@ categories: [Java]
 # 过往的经验
 在过往开发桌面端的经验中，我们大量运用依赖注入的方式来解决模块与模块的耦合问题，同时也可以用来解决模块与仓储之间传输数据的问题。这也是传统的桌面端开发中，插件式开发的经典实现。用之前写过的一个程序举个例子: 
 
-![07](https://raw.githubusercontent.com/tianjyan/tianjyan.github.io/master/images/2017-08-22-Android-Component-07.png)
+![07](/images/2017-08-22-Android-Component-07.png)
 
 整个工程的结构是这样的：`MailAccount`作为主程序，`MailAccount.Interface`是`MailAccount`唯一的引用项，`MailAccount.Extra.Trial`和`MailAccount.Extra.Standard`是完全独立的dll的项目。
 
@@ -186,13 +186,13 @@ public class Bootstrapper
 # Android中实践的前期准备
 因为过往的经验，所以我在检索Android这边信息的时候，是尝试用插件化或者组件化这种字眼来搜索的。但是我却发现了一个有趣的现象，在Android这个圈子里，组件化或者插件化，大家都默认这个技术是用来实现热更新的，并且当我看了各个开源repo的开始文档后，发现总有各种限制或者缺陷，比如在特定手机上无法进行资源转换，不支持Activity(process、configChanges)的部分属性等等。总之真正的工程实践中会面临很多缺陷。  
 
-![08](https://raw.githubusercontent.com/tianjyan/tianjyan.github.io/master/images/2017-08-22-Android-Component-08.png)
+![08](/images/2017-08-22-Android-Component-08.png)
 
 所以我放弃了这些开源repo，继续走依赖注入框架的方式。在Android的开发中，我们常用的依赖注入的框架其实有两个[RoboGuice](https://github.com/roboguice/roboguice)和[Dagger](https://github.com/square/Dagger)。不过真正意义上讲，虽然[Dagger2](https://github.com/google/dagger)也叫Dagger，但是开发商变了（square->google），实现方式也变了（运行时反射->编译时生成），所以可以理解为我们其实有三个依赖注入的框架可选。在框架的选择上，我最终还是选择了Dagger2，原因有两个，第一个是大厂质量能保证，第二个是我不存在热拔插的需求，运行时编译生成能提高程序的运行效率。
 
 # 实践
 
-<img src="https://raw.githubusercontent.com/tianjyan/tianjyan.github.io/master/images/2017-08-22-Android-Component-09.png">
+<img src="/images/2017-08-22-Android-Component-09.png">
 
 选择完依赖注入的框架后，我定义了整个程序的层次结构。每一个框都作为一个独立的Module存在，方便单独的Module的管理。那么我在Plugin这块是怎么实践的呢？假设我们要新增一个plugin，我需要做些什么？正如开始所说的，因为通信方式中，我选择了使用接口，所以我首先要定义一个接口。以出参监视功能为例，我需要定义一个`IOutParaPlugin`接口：
 
@@ -218,7 +218,7 @@ public interface IPlugin {
 
 这个定义的接口放置在我们的`Abs`的Module中，我们可以新建一个`plugin.op`的module来实现我们的功能。
 
-<img src="https://raw.githubusercontent.com/tianjyan/tianjyan.github.io/master/images/2017-08-22-Android-Component-10.png">
+<img src="/images/2017-08-22-Android-Component-10.png">
 
 除了实现了基本的Plugin的功能外，我们还要声明一个module的类来供Dagger生成编译时的信息。
 

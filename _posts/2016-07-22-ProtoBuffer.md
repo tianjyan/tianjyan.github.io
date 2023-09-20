@@ -22,7 +22,7 @@ PB对C#官方的支持是从3.0开始的，之前的1.0和2.0的版本都能找�
 
 首先，我们从微信的官网下载SDK：
 
-![Image](https://raw.githubusercontent.com/tianjyan/tianjyan.github.io/master/images/2016-07-22-ProtoBuffer-01.png)
+![Image](/images/2016-07-22-ProtoBuffer-01.png)
 
 登陆微信开发平台，进入资源中心，选择WP8资源下载，点击下载。
 
@@ -30,7 +30,7 @@ PB对C#官方的支持是从3.0开始的，之前的1.0和2.0的版本都能找�
 
 解压下载完成的ILSpy和SDK包，用ILSpy.exe打开MicroMsgSDK.dll。
 
-![Image](https://raw.githubusercontent.com/tianjyan/tianjyan.github.io/master/images/2016-07-22-ProtoBuffer-02.png)
+![Image](/images/2016-07-22-ProtoBuffer-02.png)
 
 我们暂时先不管这个结构到底是怎么来的，我们可以看到反编译出来的文件带了ProtoGen的版本号，我们尝试从Github上找到这个版本号的代码。
 
@@ -39,28 +39,28 @@ PB对C#官方的支持是从3.0开始的，之前的1.0和2.0的版本都能找�
 
 可以看到官方地址只保留了3.0的版本，对于旧的2.0版本的代码在[jskeet](https://github.com/jskeet/protobuf-csharp-port)的账号下，  
 
-![Image](https://raw.githubusercontent.com/tianjyan/tianjyan.github.io/master/images/2016-07-22-ProtoBuffer-03.png)
+![Image](/images/2016-07-22-ProtoBuffer-03.png)
 
 我们点开这个仓库，然后找到它的[Release](https://github.com/jskeet/protobuf-csharp-port/releases)页面：  
 
-![Image](https://raw.githubusercontent.com/tianjyan/tianjyan.github.io/master/images/2016-07-22-ProtoBuffer-04.png)
+![Image](/images/2016-07-22-ProtoBuffer-04.png)
 
 我们找到2.3.0.277的源码并下载到本地。
 
 解压文件，我们看到Build文件夹下有一堆编译用的脚本：  
 
-![Image](https://raw.githubusercontent.com/tianjyan/tianjyan.github.io/master/images/2016-07-22-ProtoBuffer-05.png)
+![Image](/images/2016-07-22-ProtoBuffer-05.png)
 
 双击运行buildAll.bat(此处应确保本机已经安装了Visual Studio 2008及以上版本)，然后等待编译完成。
 
 # 尝试使用源码中的Proto文件生成cs代码
 我们找到ProtoGen项目中生成的exe文件，尝试将它放到命令行中运行：  
-![Image](https://raw.githubusercontent.com/tianjyan/tianjyan.github.io/master/images/2016-07-22-ProtoBuffer-07.png)
+![Image](/images/2016-07-22-ProtoBuffer-07.png)
 
 它提示我们找不到protoc.exe程序。我们回到源码的根目录会发现有一个lib的文件夹，里面有一个protoc.exe的程序。所以我们尝试吧ProtoGen项目的所有生成文件拷贝到lib下。
 继续尝试运行我们的ProtoGen程序。
 
-![Image](https://raw.githubusercontent.com/tianjyan/tianjyan.github.io/master/images/2016-07-22-ProtoBuffer-08.png)
+![Image](/images/2016-07-22-ProtoBuffer-08.png)
 
 这回对了，我们尝试把源码下的protos文件夹下的三个子文件夹拷贝到我们的lib目录下。
 
@@ -70,7 +70,7 @@ PB对C#官方的支持是从3.0开始的，之前的1.0和2.0的版本都能找�
 
 又得到一个错误信息：  
 
-![Image](https://raw.githubusercontent.com/tianjyan/tianjyan.github.io/master/images/2016-07-22-ProtoBuffer-09.png)
+![Image](/images/2016-07-22-ProtoBuffer-09.png)
 
 提示我们找不到依赖，我们尝试打开proto文件：(有关PB的语法请参阅：http://www.cnblogs.com/stephen-liu74/archive/2013/01/02/2841485.html)
 
@@ -114,30 +114,30 @@ repeated Person person = 1;
     protogen --proto_path==protos protos/tutorial/addressbook.proto --include_imports=google/protobuf/csharp_options.proto
 
 没有任何错误，并且我们在lib的目录下发现了生成的cs文件。
-![Image](https://raw.githubusercontent.com/tianjyan/tianjyan.github.io/master/images/2016-07-22-ProtoBuffer-11.png)
+![Image](/images/2016-07-22-ProtoBuffer-11.png)
 
 
 # 从cs文件反推proto文件
 我们打开AddressBookProtos文件，阅读源码发现：
 * 只有两个非静态类，与我们Proto文件中的Person和AddressBook对应：
-![Image](https://raw.githubusercontent.com/tianjyan/tianjyan.github.io/master/images/2016-07-22-ProtoBuffer-12.png)
+![Image](/images/2016-07-22-ProtoBuffer-12.png)
 
 * Person类中又有一个嵌套的枚举和类，与PhoneType和PhoneNumber对应：
-![Image](https://raw.githubusercontent.com/tianjyan/tianjyan.github.io/master/images/2016-07-22-ProtoBuffer-13.png)
+![Image](/images/2016-07-22-ProtoBuffer-13.png)
 
 * 我们有发现，在类的IsInitialized中，Name和Id等required的有是否有值得判断，所以我们能区分去required和optional
-![Image](https://raw.githubusercontent.com/tianjyan/tianjyan.github.io/master/images/2016-07-22-ProtoBuffer-14.png)
+![Image](/images/2016-07-22-ProtoBuffer-14.png)
 
 其他依赖信息，我们可以通过引用来查找。
 
 # 从反编译的微信文件中反推proto文件
 我们以BaseReqP为例。首先，没有using，所以我们确定没有其他的Proto文件的依赖。我们只发现一个类，所以说明它只有一条message，名称就是BaseReqP，然后包名是MicroMsg.sdk.protobuf。
 我们知道message的所有字段是需要标记数字的： 
-![Image](https://raw.githubusercontent.com/tianjyan/tianjyan.github.io/master/images/2016-07-22-ProtoBuffer-15.png)
+![Image](/images/2016-07-22-ProtoBuffer-15.png)
 
 从这里我们又反推出，message有两个字段：Transaction和Type，它们类型分别是string和uint。
 接下来我们推是否是必须的。找到我们的IsInitialized:  
-![Image](https://raw.githubusercontent.com/tianjyan/tianjyan.github.io/master/images/2016-07-22-ProtoBuffer-17.png)
+![Image](/images/2016-07-22-ProtoBuffer-17.png)
 从这里我们就知道了两个字段都是必须的。所以综合上述信息，我们可以写出的proto文件如下：
 
 ```protobuf

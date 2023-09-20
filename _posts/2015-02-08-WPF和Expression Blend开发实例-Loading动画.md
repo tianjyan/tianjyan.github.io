@@ -7,7 +7,7 @@ categories: [CSharp]
 ---
 今天来点实际的，项目中可以真实使用的，一个Loading的动画，最后封装成一个控件，可以直接使用在项目中，先上图：
 
-![Image](https://raw.githubusercontent.com/tianjyan/tianjyan.github.io/master/images/2015-02-08-WPFLoading-01.png)
+![Image](/images/2015-02-08-WPFLoading-01.png)
 整个设计比较简单，就是在界面上画18个Path，然后通过动画改变OpacityMask的值来实现一种动态的效果。
 
 因为整个过程比较简单，所以其实没有用到Blend，唯一一个需要注意的是Path的路径值是请美工从PS里生成的，路径如下：

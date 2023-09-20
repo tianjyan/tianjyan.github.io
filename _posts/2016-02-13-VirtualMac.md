@@ -6,7 +6,7 @@ tags: [路由器]
 categories: [配置]
 ---
 This article will provide instructions on how to add the correct MAC address into the Access List (also known as ACL or MAC Filtering) on a router and to add a NETGEAR WiFi Range Extender (EX6100/EX6200) onto an existing LAN network.
-![Image](https://raw.githubusercontent.com/tianjyan/tianjyan.github.io/master/images/2016-02-13-VirtualMAC_01.png)
+![Image](/images/2016-02-13-VirtualMAC_01.png)
 
 When an Access List is enabled on the existing Router, access will only be granted to the specified devices in the Access List. When using a NETGEAR WiFi Range extender, wirelessly connected to the router, the MAC addresses of all the connected wired and wireless clients will be replaced by a virtual address.
 Generally, the correct procedure is to disable the Access List, connect the clients to the router through the Extender and then add the MAC addresses on the Attached Devices page.
@@ -16,7 +16,7 @@ Generally, the correct procedure is to disable the Access List, connect the clie
 
 The two real MAC addresses can be found on the label on the back (EX6200) or on the bottom (EX6100):
 
-![Image](https://raw.githubusercontent.com/tianjyan/tianjyan.github.io/master/images/2016-02-13-VirtualMAC_02.png)
+![Image](/images/2016-02-13-VirtualMAC_02.png)
 
 (the image above shows the EX6200 MAC addresses labels printed on the unit and the Retail box)
 
@@ -32,8 +32,8 @@ MAC3 is MAC1 minus 1  C4:04:15:5F:20:A**<font color="red">C</font>** (See hexade
 Then we toggle the bit as per EX6200  C**<font color="red">6</font>**:04:15:5F:20:A**<font color="red">C</font>**
 The two tables below provide further information regarding the two Range Extenders MAC address usage:
 
-![Image](https://raw.githubusercontent.com/tianjyan/tianjyan.github.io/master/images/2016-02-13-VirtualMAC_03.png)  
-![Image](https://raw.githubusercontent.com/tianjyan/tianjyan.github.io/master/images/2016-02-13-VirtualMAC_04.png)
+![Image](/images/2016-02-13-VirtualMAC_03.png)  
+![Image](/images/2016-02-13-VirtualMAC_04.png)
 
 Once the virtual MAC addresses have been obtained, the **ACCESS LIST** on the router can be created or correctly updated:
 As an example, using the MAC addresses in the above tables and the following MAC address for a Wireless client: **A4:C3:61:46:CB:3C**

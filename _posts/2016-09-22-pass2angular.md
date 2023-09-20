@@ -79,7 +79,7 @@ app.get('/sample1', function(req, res){
 
 值得注意的是，因为ejs的取值方式从html变成了JavaScript，所以我们的标签应该写成`<%-%>`而不是`<%=%>`，否则我们会在控制台看见这样的错：
 
-![image](https://raw.githubusercontent.com/tianjyan/tianjyan.github.io/master/images/2016-09-22-pass2angular-01.png)
+![image](/images/2016-09-22-pass2angular-01.png)
 
 然后我们在使用ng-repeat就能拿到生成一个列表了：
 ```html
@@ -90,7 +90,7 @@ app.get('/sample1', function(req, res){
 </ul>
 ```
 
-![image](https://raw.githubusercontent.com/tianjyan/tianjyan.github.io/master/images/2016-09-22-pass2angular-02.png)
+![image](/images/2016-09-22-pass2angular-02.png)
 
 # 方法2
 方法2是用Controller再发送Http request的方式实现的。现在app.js文件中构造两个Http Get的方法：
@@ -121,7 +121,7 @@ app.get('/sample2/users', function(req, res){
 
 结果：
 
-![image](https://raw.githubusercontent.com/tianjyan/tianjyan.github.io/master/images/2016-09-22-pass2angular-03.png)
+![image](/images/2016-09-22-pass2angular-03.png)
 
 # 方法3
 第三个方法应该是最简单有效，相比1，不需要将代码耦合到Controller中，相比2，不需要再发送一个http的请求，在body添加ng-init即可：
@@ -146,11 +146,11 @@ app.get('/sample2/users', function(req, res){
 ```
 
 结果：
-![image](https://raw.githubusercontent.com/tianjyan/tianjyan.github.io/master/images/2016-09-22-pass2angular-04.png)
+![image](/images/2016-09-22-pass2angular-04.png)
 
 # 总结
 本文描述了三种Express向页面传值的方式，其实三种方式都是适用的，这完全取决于使用者如何取舍。个人倾向于适用第三种方式。
 
 # 源码下载
-[源码](https://raw.githubusercontent.com/tianjyan/tianjyan.github.io/master/attachments/2016-09-22-pass2angular-code.zip)
+[源码](/attachments/2016-09-22-pass2angular-code.zip)
 

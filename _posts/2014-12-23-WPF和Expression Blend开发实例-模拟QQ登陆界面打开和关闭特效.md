@@ -6,9 +6,9 @@ tags: [WPF]
 categories: [CSharp]
 ---
 不管在消费者的心中腾讯是一个怎么样的模仿者抄袭者的形象，但是腾讯在软件交互上的设计一直是一流的。正如某位已故的知名产品经理所说的：设计并非外观怎样，感觉如何。设计的是产品的工作原理。我觉得腾讯掌握了其精髓。在2013版的桌面版QQ中，腾讯的登陆界面在打开的时候有一个展开的过程，而关闭的时候有个收缩的过程。效果如图：  
-![Image](https://raw.githubusercontent.com/tianjyan/tianjyan.github.io/master/images/2014-12-23-WPFQQ-01.jpg)  
+![Image](/images/2014-12-23-WPFQQ-01.jpg)  
 借助WPF和Expression Blend，我们可以轻易的实现这么一个效果，最终用比较慢的速率实现这个效果如下：  
-![Image](https://raw.githubusercontent.com/tianjyan/tianjyan.github.io/master/images/2014-12-23-WPFQQ-02.jpg)
+![Image](/images/2014-12-23-WPFQQ-02.jpg)
 
 这个效果一共能够分成两个部分:展开和收缩，具体的代码如下：
 

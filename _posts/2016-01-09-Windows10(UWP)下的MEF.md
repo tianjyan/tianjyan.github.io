@@ -156,7 +156,7 @@ public class Log : ILog
 
 建立我们的项目如下
 
-![Image](https://raw.githubusercontent.com/tianjyan/tianjyan.github.io/master/images/2016-01-09-UWPMEF-01.png)
+![Image](/images/2016-01-09-UWPMEF-01.png)
 
 代码已经完整的托管到[GitHub](https://github.com/LibertyOrganization/CommonRepo/tree/master/01.Projects/02.UWP%20Untils/uwp_MEF)上，可以方便的查阅。
 
@@ -249,21 +249,21 @@ public sealed partial class View1 : UserControl, IView
 # 演示
 初始的状态：
 
-![Image](https://raw.githubusercontent.com/tianjyan/tianjyan.github.io/master/images/2016-01-09-UWPMEF-02.png)
+![Image](/images/2016-01-09-UWPMEF-02.png)
 
 当我们点击Show View 1按钮时，容器去创建View1的实例，View1所需要的实例，又会根据导入导出的原则去创建。创建完成后，
 
-![Image](https://raw.githubusercontent.com/tianjyan/tianjyan.github.io/master/images/2016-01-09-UWPMEF-03.png)
+![Image](/images/2016-01-09-UWPMEF-03.png)
 
 点击View 1 Click后，会将ViewModel层的数据传给Service，Service又调用回掉函数，将数据放置到UI上。
 
-![Image](https://raw.githubusercontent.com/tianjyan/tianjyan.github.io/master/images/2016-01-09-UWPMEF-04.png)
+![Image](/images/2016-01-09-UWPMEF-04.png)
 
 也可以点击Show View 2进行相应的操作。
 
-![Image](https://raw.githubusercontent.com/tianjyan/tianjyan.github.io/master/images/2016-01-09-UWPMEF-05.png)
+![Image](/images/2016-01-09-UWPMEF-05.png)
 
-![Image](https://raw.githubusercontent.com/tianjyan/tianjyan.github.io/master/images/2016-01-09-UWPMEF-06.png)
+![Image](/images/2016-01-09-UWPMEF-06.png)
 
 # 总结
 本文讲述了一个简单的MEF在UWP下的引用，体现了MEF通过依赖注入的方式将程序更好的解耦。阅读本文希望对你有所帮助。
