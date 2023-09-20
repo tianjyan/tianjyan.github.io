@@ -8,19 +8,19 @@ categories: [配置]
 
 不同版本操作方式可能不同。
 
-# 安装文件系统
+## 安装文件系统
 树莓派作为一个Linux系统，本身不支持exFat和ntfs格式，所以需要安装扩展：
     
     sudo apt-get install exfat-fuse
     sudo apt-get install ntfs-3g
     
-# 安装samba
+## 安装samba
 
     sudo apt-get install samba samba-common-bin
     sudo apt-get install netatalk （可选，用于支持AFP）
     sudo apt-get install avahi-daemon（可选，用于支持网内的计算机自动发现）
     
-# 编辑配置文件
+## 编辑配置文件
 
     sudo nano /etc/samba/smb.conf
     
@@ -36,13 +36,13 @@ categories: [配置]
         directory mask = 0771
         read only = no
         
-# 添加用户
+## 添加用户
 
     sudo smbpasswd -a pi
 
 两次输入密码后成功建立账号。
 
-# 重启samba
+## 重启samba
 
     sudo /etc/init.d/samba restart
     

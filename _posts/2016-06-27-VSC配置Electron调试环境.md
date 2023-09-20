@@ -5,7 +5,7 @@ date: 2016-06-27 21:15:58
 tags: [Visual Studio Code]
 categories: [配置]
 ---
-# Windows：
+## Windows：
 configurations中添加：
 
     {
@@ -29,7 +29,7 @@ configurations中添加：
         "outDir": null
     }
 
-# Mac：
+## Mac：
 configurations中添加：
 
     {

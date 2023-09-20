@@ -12,7 +12,7 @@ When an Access List is enabled on the existing Router, access will only be grant
 Generally, the correct procedure is to disable the Access List, connect the clients to the router through the Extender and then add the MAC addresses on the Attached Devices page.
 **The problem exists** only when the router does not have an **Attached Devices** page. In such case, the virtual MAC address needs to be manually retrieved.
 
-# To retrieve the MAC address:
+## To retrieve the MAC address:
 
 The two real MAC addresses can be found on the label on the back (EX6200) or on the bottom (EX6100):
 
