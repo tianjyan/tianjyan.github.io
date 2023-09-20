@@ -3,9 +3,9 @@ layout: post
 title: Windows10(UWP)下的MEF
 date: 2016-01-09 21:15:58
 tags: [UWP]
-categories: [CSharp]
+categories: [csharp]
 ---
-# 前言
+## 前言
 最近在帮一家知名外企开发Universal Windows Platform的相关应用，开发过程中不由感慨：项目分为两种，一种叫做前人栽树后人乘凉，一种叫做前人挖坑后人遭殃。不多说了，多说又要变成月经贴了。
 
 讲讲MEF。
@@ -25,7 +25,7 @@ MEF2支持的平台
 
 通常意义上，当我们讲到MEF的时候，一般都会去描述这是一个用来实行插件式开发的一套东西。当插件式开发成为了一种可能，那就意味着我们的项目可以被完整的解耦，这就保证了我们程序的健壮性，同时在开发的过程中我们也避免了各种开发人员的冲突。
 
-# 开始
+## 开始
 怎样开始写一个基于MEF的程序？
 
 假设我们现在写的是一个UWP的项目，并且我们采用C#+XAML的方式。因为MVVM是XAML的主打的方式，可以很好的应用绑定数据的这个模型，所以我们采用MVVM。
@@ -43,7 +43,7 @@ MEF2支持的平台
 >* Cache
 
 想想我们怎么处理这个问题呢？
-```CSharp
+```csharp
 public sealed class Hub
 {
         
@@ -90,7 +90,7 @@ public sealed class Hub
 
 **答案：依赖注入。**
 
-# 重新设计
+## 重新设计
 保留我们之前所设想的所有的组件，引入接口来进入注入：
 
 >* IService
@@ -98,7 +98,7 @@ public sealed class Hub
 >* ICache
 
 看一下我们的ViewModel现在应该是怎么样的?
-```CSharp
+```csharp
 public class ViewModel
 {
     ILog Log;
@@ -117,11 +117,11 @@ public class ViewModel
 
 至此，我们设计还没有引入MEF，看上去已经相对比较好的解耦了，我们只有在调用ViewModel的时候，引入具体的是实例，耦合发生在了此处。
 
-# 引入MEF
+## 引入MEF
 试想一下，既然我们需要生成的实例的对象都已经在我们的DLL之中，为什么我们还要手动的去生成一个实例，然后再传到具体的构造函数里面，它就不能自己寻找吗?
 
 假设我们的类都有一个别名，然后我们在需要引用的地方告诉告诉程序，我们需要一个实现Ixxx接口的类，它的名字叫做xxx，这样我们是不是更进了一部。如下：
-```CSharp
+```csharp
 public class ViewModel
 {
     [Import("LogSample")]
@@ -139,7 +139,7 @@ public class ViewModel
 当我们构造函数完成后，Log等对象就已经自动在程序集中找到名为LogSample的的实现ILog的类，Service也是，Cache也是。
 
 看下Log
-```CSharp
+```csharp
 [Export("LogSample", typeof(ILog))]
 public class Log : ILog
 {
@@ -147,7 +147,7 @@ public class Log : ILog
 ```
 到现在为止，我们主要关注具体的功能实现就好了。
 
-# MEF正式引入
+## MEF正式引入
 为了简化我们的程序，更加关注MEF的本质，我们把程序设计为仅包括下列的组件
 
 >* View
@@ -161,7 +161,7 @@ public class Log : ILog
 代码已经完整的托管到[GitHub](https://github.com/LibertyOrganization/CommonRepo/tree/master/01.Projects/02.UWP%20Untils/uwp_MEF)上，可以方便的查阅。
 
 我们在Service中写了一个演示的功能：
-```CSharp
+```csharp
 [Export(Constant.Confing.SampleService,typeof(IService))]
 public class SampleService : IService
 {
@@ -172,7 +172,7 @@ public class SampleService : IService
 }
 ```
 我们看一下我们的程序的主界面：
-```CSharp
+```csharp
 public sealed partial class MainPage : Page
 {
     [Import(Constant.Confing.View1)]
@@ -219,7 +219,7 @@ public sealed partial class MainPage : Page
 将所有的程序集加入容器之中，然后通过容器去创建对象。
 
 View的代码：
-```CSharp
+```csharp
 [Export(Constant.Confing.View1,typeof(IView))]
 public sealed partial class View1 : UserControl, IView
 {
@@ -246,7 +246,7 @@ public sealed partial class View1 : UserControl, IView
     }
 }
 ```
-# 演示
+## 演示
 初始的状态：
 
 ![Image](/images/2016-01-09-UWPMEF-02.png)
@@ -265,14 +265,14 @@ public sealed partial class View1 : UserControl, IView
 
 ![Image](/images/2016-01-09-UWPMEF-06.png)
 
-# 总结
+## 总结
 本文讲述了一个简单的MEF在UWP下的引用，体现了MEF通过依赖注入的方式将程序更好的解耦。阅读本文希望对你有所帮助。
 
 谢谢~
 
 代码下载：http://files.cnblogs.com/files/youngytj/uwp_MEF.zip
 
-# 参考资料
+## 参考资料
 [Unity](http://unity.codeplex.com/)  
 [《MEF程序设计指南》博文汇总](http://www.cnblogs.com/beniao/archive/2010/08/11/1797537.html)  
 [Prism](https://compositewpf.codeplex.com/)  
