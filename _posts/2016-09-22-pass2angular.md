@@ -6,7 +6,7 @@ tags: [Node]
 categories: [JavaScript]
 ---
 
-# 写在前面
+## 写在前面
 JavaScript社区真是越来越火了，通过各种丰富的扩展可以完成从前端到后端再到桌面的各种实现。
 
 ## 从前端框架角度看
@@ -51,7 +51,7 @@ Facebook的React Native和阿里巴巴的Weex也使得前端开发者能够轻�
 # 方法1
 首先我在app.js文件中构建一个Http Get的方法：
 
-```JavaScript
+```js
 app.get('/sample1', function(req, res){
     res.render('sample1', {
         "title": mockdata.title,
@@ -94,7 +94,7 @@ app.get('/sample1', function(req, res){
 
 # 方法2
 方法2是用Controller再发送Http request的方式实现的。现在app.js文件中构造两个Http Get的方法：
-```JavaScript
+```js
 app.get('/sample2', function(req, res){
     res.render('sample2', {
         "title": mockdata.sample2

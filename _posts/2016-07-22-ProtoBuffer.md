@@ -3,22 +3,21 @@ layout: post
 title: 从微信SDK看ProtoBuffer文件的生成
 date: 2016-07-22 21:15:58
 tags: [ProtoBuffer]
-categories: [CSharp]
+categories: [csharp]
 ---
 
-# 前言  
+##  前言  
 
-Protocol Buffers (下面简称PB)是一种轻便高效的结构化数据存储格式，可以用于结构化数据串行化，很适合做数据存储或 RPC 数据交换格式。它可用于通讯协议、数据存储等领域的语言无关、平台无关、可扩展的序列化结构数据格式。它支持多种语言，比如C++，Java，C#，Python，JavaScript等等。目前它的最新版本是[3.0.0](https://github.com/google/protobuf/releases)。与PB经常相提并论的也是Google推出的FlatBuffers(下面简称FB)。有关PB和FB性能和语义等方面的区别，这里就不展开描述了。如果有兴趣，可以参阅下面的信息：
+Protocol Buffers (下面简称PB)是一种轻便高效的结构化数据存储格式，可以用于结构化数据串行化，很适合做数据存储或 RPC 数据交换格式。它可用于通讯协议、数据存储等领域的语言无关、平台无关、可扩展的序列化结构数据格式。它支持多种语言，比如C++，Java，C## ，Python，JavaScript等等。目前它的最新版本是[3.0.0](https://github.com/google/protobuf/releases)。与PB经常相提并论的也是Google推出的FlatBuffers(下面简称FB)。有关PB和FB性能和语义等方面的区别，这里就不展开描述了。如果有兴趣，可以参阅下面的信息：
 
 * [Google序列化库FlatBuffers 1.1发布，及与protobuf的比较](http://mp.weixin.qq.com/s?__biz=MzA3MDY5NjAzMw==&mid=205406410&idx=7&sn=dbacd18a854886022be6351410885b39&)
 * [FlatBuffers Documentation](http://google.github.io/flatbuffers/)  
 * [FlatBuffers与protobuf性能比较](http://blog.csdn.net/menggucaoyuan/article/details/34409433)
 
 目前很多公司在一些高性能的通信场景下，会越来越多的选择用PB或者FB来替代我们常用的Json。比如说Windows Phone的微信的SDK就用到了。
-<!-- more -->
 
-# 反编译微信SDK
-PB对C#官方的支持是从3.0开始的，之前的1.0和2.0的版本都能找到一些非官方的版本。我们先反编译一下微信的SDK，看下它具体是什么版本的。
+##  反编译微信SDK
+PB对C## 官方的支持是从3.0开始的，之前的1.0和2.0的版本都能找到一些非官方的版本。我们先反编译一下微信的SDK，看下它具体是什么版本的。
 
 首先，我们从微信的官网下载SDK：
 
@@ -34,8 +33,8 @@ PB对C#官方的支持是从3.0开始的，之前的1.0和2.0的版本都能找�
 
 我们暂时先不管这个结构到底是怎么来的，我们可以看到反编译出来的文件带了ProtoGen的版本号，我们尝试从Github上找到这个版本号的代码。
 
-# 编译ProtoBuffer源码
-我们先打开官方的C#版本的PB的源码页面：[地址](https://github.com/google/protobuf/tree/master/csharp)。
+##  编译ProtoBuffer源码
+我们先打开官方的C## 版本的PB的源码页面：[地址](https://github.com/google/protobuf/tree/master/csharp)。
 
 可以看到官方地址只保留了3.0的版本，对于旧的2.0版本的代码在[jskeet](https://github.com/jskeet/protobuf-csharp-port)的账号下，  
 
@@ -53,7 +52,7 @@ PB对C#官方的支持是从3.0开始的，之前的1.0和2.0的版本都能找�
 
 双击运行buildAll.bat(此处应确保本机已经安装了Visual Studio 2008及以上版本)，然后等待编译完成。
 
-# 尝试使用源码中的Proto文件生成cs代码
+##  尝试使用源码中的Proto文件生成cs代码
 我们找到ProtoGen项目中生成的exe文件，尝试将它放到命令行中运行：  
 ![Image](/images/2016-07-22-ProtoBuffer-07.png)
 
@@ -117,7 +116,7 @@ repeated Person person = 1;
 ![Image](/images/2016-07-22-ProtoBuffer-11.png)
 
 
-# 从cs文件反推proto文件
+##  从cs文件反推proto文件
 我们打开AddressBookProtos文件，阅读源码发现：
 * 只有两个非静态类，与我们Proto文件中的Person和AddressBook对应：
 ![Image](/images/2016-07-22-ProtoBuffer-12.png)
@@ -130,7 +129,7 @@ repeated Person person = 1;
 
 其他依赖信息，我们可以通过引用来查找。
 
-# 从反编译的微信文件中反推proto文件
+##  从反编译的微信文件中反推proto文件
 我们以BaseReqP为例。首先，没有using，所以我们确定没有其他的Proto文件的依赖。我们只发现一个类，所以说明它只有一条message，名称就是BaseReqP，然后包名是MicroMsg.sdk.protobuf。
 我们知道message的所有字段是需要标记数字的： 
 ![Image](/images/2016-07-22-ProtoBuffer-15.png)
@@ -149,10 +148,10 @@ message BaseReqP {
 }
 ```
 
-# 小结
-本篇内容简要介绍了ProtoBuffer的文件如何生成C#文件，并简单的举例如何从C#文件反推Proto文件。
+##  小结
+本篇内容简要介绍了ProtoBuffer的文件如何生成C## 文件，并简单的举例如何从C## 文件反推Proto文件。
 
-# 参考信息  
+##  参考信息  
 * [FlatBuffers Documentation](https://google.github.io/flatbuffers/)  
 * [Google Protocol Buffer 的使用和原理](http://www.ibm.com/developerworks/cn/linux/l-cn-gpb/index.html)  
 * [Protobuf Source](https://github.com/google/protobuf)  
