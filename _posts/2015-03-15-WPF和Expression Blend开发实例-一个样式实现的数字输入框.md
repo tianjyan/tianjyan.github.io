@@ -3,7 +3,7 @@ layout: post
 title: WPF和Expression Blend开发实例:一个样式实现的数字输入框
 date: 2015-03-15 21:15:58
 tags: [WPF]
-categories: [CSharp]
+categories: [cSharp]
 ---
 今天来一个比较奇淫技巧的手法，很少人用，同时也不推荐太过频繁的使用。
 

@@ -3,7 +3,7 @@ layout: post
 title: WPF和Expression Blend开发实例:模拟QQ登陆界面打开和关闭特效
 date: 2014-12-23 21:15:58
 tags: [WPF]
-categories: [CSharp]
+categories: [cSharp]
 ---
 不管在消费者的心中腾讯是一个怎么样的模仿者抄袭者的形象，但是腾讯在软件交互上的设计一直是一流的。正如某位已故的知名产品经理所说的：设计并非外观怎样，感觉如何。设计的是产品的工作原理。我觉得腾讯掌握了其精髓。在2013版的桌面版QQ中，腾讯的登陆界面在打开的时候有一个展开的过程，而关闭的时候有个收缩的过程。效果如图：  
 ![Image](/images/2014-12-23-WPFQQ-01.jpg)  
@@ -50,7 +50,7 @@ categories: [CSharp]
 然后在后台代码中控制动画：
 
 在构造函数中添加如下代码：
-```CSharp
+```cSharp
 InitializeComponent();
 sb= (System.Windows.Media.Animation.Storyboard)layoutroot.Resources["spread"];
 sb.Completed += (s, e) =>
@@ -64,7 +64,7 @@ if (sb != null)
 }
 ```
 关闭按钮的事件如下：
-```CSharp
+```cSharp
 private void OnClick(object sender, RoutedEventArgs e)
 {
     if (sb != null)

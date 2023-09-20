@@ -3,7 +3,7 @@ layout: post
 title: WPF和Expression Blend开发实例:充分利用Blend实现一个探照灯的效果
 date: 2015-01-10 21:15:58
 tags: [WPF]
-categories: [CSharp]
+categories: [cSharp]
 ---
 本篇文章阅读的基础是在读者对于WPF有一定的了解并且有WPF相关的编码经验，对于Blend的界面布局有基础的知识。文章中对于相应的在Blend中的操作进行演示，并不会进行细致到每个属性的介绍。同时，本篇文章所用的Blend版本是5.0.40218.0，即VS2012对应的版本，对于其他版本的操作区别，请读者自行研究。Ok，我们现在开始，本篇文章最终的效果如下图所示:  
 ![Image](/images/2015-01-10-WPFLight-01.jpg)
@@ -31,7 +31,7 @@ categories: [CSharp]
 3.添加一个按钮，用于退出程序，将它放置在TextBlock的右端，并在后台代码中添加处理事件。
 
 ![Image](/images/2015-01-10-WPFLight-05.jpg)   
-```CSharp
+```cSharp
 private void OnClick(object sender, System.Windows.RoutedEventArgs e)
 {
     Application.Current.Shutdown();

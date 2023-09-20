@@ -3,7 +3,7 @@ layout: post
 title: WPF和Expression Blend开发实例:Loading动画
 date: 2015-02-08 21:15:58
 tags: [WPF]
-categories: [CSharp]
+categories: [cSharp]
 ---
 今天来点实际的，项目中可以真实使用的，一个Loading的动画，最后封装成一个控件，可以直接使用在项目中，先上图：
 

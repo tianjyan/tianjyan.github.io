@@ -3,7 +3,7 @@ layout: post
 title: WPF和Expression Blend开发实例：Adorner(装饰器)应用实例
 date: 2014-11-27 21:15:58
 tags: [WPF]
-categories: [CSharp]
+categories: [cSharp]
 ---
 装饰器:
 > 表示用于修饰 UIElement 的 FrameworkElement 的抽象类
@@ -18,7 +18,7 @@ categories: [CSharp]
 
 装饰器是放在装饰层(AdornerLayer)里面的，这就意味着我们可以添加多个装饰器到UIElement上。通过AdornerLayer的静态方法GetAdornerLayer，我们可以很轻松的获取一个UIElement的装饰层。
 接下来我们只要继承Adorner这个抽象类，来实现一个真实可用的装饰器，然后把装饰器加到控件的装饰层上面就可以了。
-```CSharp
+```cSharp
 public class AdornerForTextBox : Adorner
 {
     private VisualCollection visual;
@@ -65,7 +65,7 @@ public class AdornerForTextBox : Adorner
 }
 ```
 显示装饰器
-```CSharp
+```cSharp
 var adornerLayer = AdornerLayer.GetAdornerLayer(tb_Adorner);
 if (adornerLayer != null)
 {
