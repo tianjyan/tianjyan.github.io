@@ -3,7 +3,7 @@ layout: post
 title: WP开发实例：在wp中实现Android和ios中的菜单栏
 date: 2013-07-11 21:15:58
 tags: [Windows Phone]
-categories: [CSharp]
+categories: [cSharp]
 ---
 第一次用wp的时候，除了感觉到整个主屏幕的简单和直接外，最大的感受就是菜单栏和安卓和ios很大的不同。说句实话就是感觉很不习惯，一直在想，如果wp也使用类似的菜单栏的话，会不会能更大程度的降低使用wp的学习成本。所以，今天就给个思路来如何实现安卓的菜单栏。
 
@@ -114,7 +114,7 @@ categories: [CSharp]
 </Grid>
 ```   
 前台的效果实现之后，要在后台处理相应的信息：
-```CSharp
+```cSharp
 private void RadioButton_Checked(object sender, RoutedEventArgs e)
 {
     if ((sender as RadioButton) == this.rb1)
