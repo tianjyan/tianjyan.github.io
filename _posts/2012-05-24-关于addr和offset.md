@@ -3,15 +3,15 @@ layout: post
 title: 关于addr和offset
 date: 2012-05-24 21:15:58
 tags: [Win32]
-categories: [C]
+categories: [c]
 ---
 
-# 相同点
+## 相同点
 
 1. addr和offset 操作符都是获得操作数的偏移地址；
 2. addr和offset 的处理都是先检查处理的是全局还是局部变量，若是全局变量则把其地址放到目标文件中。
 
-# 不同点
+## 不同点
 
 1. addr伪操作符,只能用在 invoke 伪指令语句中；
 2. offset伪操作符可以用在任何可能涉及偏移地址的指令(当然包括 invoke 伪指令)并想获取操作数偏移地址的场合中；
@@ -22,5 +22,5 @@ categories: [C]
     >push eax  
     >因为lea指令能够在运行时决定标号的有效地址，所以有了上述指令序列，就可以保证invoke的正确执行了。
 
-# 总结
+## 总结
 为了避免出现错误，建议除在局部变量中引用addr操作符外，其它场合使用offset。
